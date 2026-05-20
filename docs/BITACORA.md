@@ -87,3 +87,31 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Esperar confirmación de Franco/Manuel para stats reales
 - Confirmar datos de contacto finales
 - DNS manfran.com (bloqueante — requiere acceso Google Workspace de Manuel)
+
+---
+
+## 2026-05-20 — Sesión 4: Auditoría visual y dirección de rediseño (Nuvocargo como referencia)
+
+**Qué se hizo:**
+- Diagnóstico del resultado del one-shot: identidad de marca correctamente trasladada, pero ejecución de diseño plana (espaciado uniforme, tipografías sin presencia, scroll sin storytelling, cards con sombras, hero sin profundidad)
+- Investigación profunda de https://www.nuvocargo.com/ con WebFetch + inspección DOM en vivo via Chrome DevTools MCP. Extracción de valores reales: tipografía (GT Super Display 60/64 letter-spacing -1.2px, Value Sans Pro body 14px), paleta (cream #FAF8F6, forest #1B473F y #307460, dark-gray #404040 — sin blanco ni negro puros), espaciado (max-width 1440px, padding lateral 32/80px, ritmo asimétrico 64/80/96/192px), composición del hero (video + overlay gradient verde + 1 CTA invertido), navbar hide-on-scroll, footer cream gigante con padding-top 168px, scroll lineal sin parallax (Webflow IX2, no GSAP/Lenis/Framer)
+- Screenshots de referencia guardados en `.tmp/nuvo-hero.png`, `nuvo-stats.png`, `nuvo-agents.png`, `nuvo-pilot.png`, `nuvo-footer.png`
+- Creada nota `01-Proyecto Web/Auditoría Visual.md` en la vault con diagnóstico + reporte completo de Nuvo + top 10 patrones replicables + plan de refactor en 5 fases (Sistema → Esqueleto → Hero+Stats → Sections → Motion)
+- Evaluación del repo Hallmark (Nutlope) como referencia secundaria de componentes marketing, no como framework a adoptar
+- Decisiones de dirección tomadas y congeladas:
+  1. Tipografía intacta — se mantiene Barlow Condensed + Inter, solo se ajustan tamaños/tracking/line-height
+  2. Paleta intacta — se mantiene negro #1A1A1A / azul #00A0D8 / blanco #FFFFFF, con permiso explícito para gradientes con el azul MANFRAN
+  3. Hero con background generado por Higgsfield (no video real) + capa tenue de azul MANFRAN superpuesta — adelanta parcialmente Fase 1.5
+  4. Naza aprueba decisiones estéticas y de arquitectura (no requiere Franco/Manuel para diseño, sí para contenido)
+
+**Archivos modificados:**
+- `ObsidianVault/ManFran/01-Proyecto Web/Auditoría Visual.md` — nuevo
+- `.tmp/nuvo-*.png` — 5 screenshots de referencia (untracked)
+
+**Pendiente:**
+- Activar `@higgsfield-agent` para generar el background del hero
+- Fase A: refactor de `tokens.css` (escala tipográfica nueva, escala de espaciado 80/96/192, container 1440px)
+- Fase B: refactor de Navbar (hide-on-scroll + mega-menu) y Footer (cream gigante)
+- Fase C: refactor de Hero + Stats (gradient blend hero→stats, números estáticos serif gigantes)
+- DNS manfran.com (sigue bloqueado — requiere Manuel)
+- Stats reales y datos de contacto (sigue pendiente — requiere Franco/Manuel)
