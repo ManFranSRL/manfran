@@ -115,3 +115,6 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Fase C: refactor de Hero + Stats (gradient blend hero→stats, números estáticos serif gigantes)
 - DNS manfran.com (sigue bloqueado — requiere Manuel)
 - Stats reales y datos de contacto (sigue pendiente — requiere Franco/Manuel)
+
+**Corrección registrada al cierre:**
+- Las fuentes oficiales de marca son **Avenir Next Condensed Bold (display)** + **Helvetica (body, light, bold)** — archivos `.ttf` ya presentes en `assets/fonts/`. El one-shot inicial usó Barlow Condensed + Inter desde Google Fonts como placeholder. CLAUDE.md, Auditoría Visual, Handoff Notes y Plan Activo corregidos. Tarea agregada al plan: migrar a `next/font/local` con las fuentes reales durante el refactor (Fase A).

@@ -45,8 +45,9 @@
 
 ### 🔄 Próximo
 - [ ] **Higgsfield**: activar `@higgsfield-agent`, generar background del hero (paleta compatible con overlay azul MANFRAN, movimiento sutil estilo Nuvo)
+- [ ] **Migración de fuentes**: reemplazar Barlow Condensed + Inter (Google Fonts, placeholder del one-shot) por **Avenir Next Condensed Bold + Helvetica** desde `assets/fonts/` vía `next/font/local`. Actualizar `layout.tsx`, `tokens.css` y referencias Tailwind.
 - [ ] **Fase A — Sistema de diseño 2.0**: refactor `src/styles/tokens.css`
-  - Escala tipográfica nueva (display 48–60px, tracking -0.02em, line-height 1.0–1.1)
+  - Escala tipográfica nueva con fuentes oficiales (display 48–60px Avenir Next Condensed Bold, tracking -0.02em, line-height 1.0–1.1; body Helvetica)
   - Escala de espaciado (80 / 96 / 192 px)
   - Container `max-w-[1440px]` + padding lateral 32px / nav 80px
   - Tokens de motion (easings, durations unificados)

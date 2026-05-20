@@ -6,7 +6,7 @@ Dominio: www.manfran.com | Stack: Next.js 14 + TypeScript + Tailwind + Framer Mo
 
 ## Identidad de marca
 - Negro: #1A1A1A | Azul: #00A0D8 | Blanco: #FFFFFF
-- Tipografía web: Barlow Condensed (display) + Inter (body)
+- Tipografía oficial de marca: **Avenir Next Condensed Bold** (display) + **Helvetica** (body, con variantes light y bold). Archivos `.ttf` en `assets/fonts/`.
 - Tono: profesional, directo, confiable — sin jerga corporativa vacía
 
 ## Stack técnico
@@ -15,7 +15,7 @@ Dominio: www.manfran.com | Stack: Next.js 14 + TypeScript + Tailwind + Framer Mo
 - Estilos: Tailwind CSS + tokens CSS custom en /src/styles/tokens.css
 - Animaciones: Framer Motion para scroll y entrada, Three.js/Spline para fondo hero
 - Deploy: Vercel
-- Fuentes: Google Fonts (Barlow Condensed + Inter)
+- Fuentes: locales vía `next/font/local` desde `assets/fonts/` (Avenir Next Condensed Bold + Helvetica). El one-shot inicial usó Barlow Condensed + Inter desde Google Fonts como placeholder — pendiente de migrar a las fuentes reales en el refactor.
 
 ## Convenciones de código
 - Componentes: PascalCase, un componente por archivo
