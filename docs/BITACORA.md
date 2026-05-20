@@ -34,7 +34,39 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Subcarpetas: 01-Proyecto Web, 02-Negocio, 03-Automatizaciones, 04-Credenciales, 05-Ideas
 
 **Pendiente:**
-- Instalar dependencias y correr dev server
-- Deploy en Vercel
+- Instalar dependencias y correr dev server ✓ (resuelto en sesión 2)
+- Deploy en Vercel ✓ (resuelto en sesión 2)
 - Confirmar datos de stats con Franco y Manuel
 - Contenido final de todos los textos
+
+---
+
+## 2026-05-20 — Sesión 2: Favicon, OG image, tema Obsidian, GitHub y Vercel
+
+**Qué se hizo:**
+- Creado tema Obsidian MANFRAN con fuentes locales (Avenir Next Condensed Bold + Helvetica) y colores de marca. Font-weight unificado a 600 en todos los headings H1–H6
+- Creadas fuentes locales en vault: `assets/fonts/` con avenir-next-condensed-bold.ttf, Helvetica.ttf, Helvetica-Bold.ttf, helvetica-light.ttf
+- Corregido `globals.css`: eliminado `@import url()` duplicado de Google Fonts (ya se cargan vía `next/font`)
+- Favicon optimizado a 32×32 px (`public/favicon-32.png`) y `favicon.ico` regenerado
+- OG image copiada a `public/og-image.png`, referencias actualizadas en `layout.tsx`
+- Cuenta GitHub creada (ManFranSRL), repo `manfran-web` creado y push completado
+- Cuenta Vercel creada y conectada al repo, deploy inicial exitoso
+- Dominio `manfran.com` agregado a Vercel — registros DNS obtenidos pero pendientes de configurar
+- Skills de Claude Code creadas: `/session-close`, `/obsidian-handoff`, `/obsidian-sync`
+
+**Archivos modificados:**
+- `src/app/globals.css` — eliminado @import de Google Fonts duplicado
+- `src/app/layout.tsx` — OG image actualizada a `.png`
+- `public/favicon.ico` — regenerado desde favicon.png editado
+- `public/favicon-32.png` — nuevo, 32×32 px
+- `public/og-image.png` — nuevo
+- `.claude/commands/session-close.md` — nueva skill
+- `.claude/commands/obsidian-handoff.md` — nueva skill
+- `.claude/commands/obsidian-sync.md` — nueva skill
+
+**Pendiente:**
+- DNS manfran.com — bloqueado hasta hablar con Manuel (tiene acceso a Google Workspace)
+  - CNAME: www → 417ddb1d3a6e551e.vercel-dns-017.com.
+  - A: @ → 216.198.79.1
+- Confirmar datos reales de stats con Franco y Manuel
+- Contenido final de textos
