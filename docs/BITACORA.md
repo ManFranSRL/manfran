@@ -70,3 +70,20 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
   - A: @ → 216.198.79.1
 - Confirmar datos reales de stats con Franco y Manuel
 - Contenido final de textos
+
+---
+
+## 2026-05-20 — Sesión 3: Confirmación de workflow y estructura de sesiones
+
+**Qué se hizo:**
+- Confirmado que abrir la próxima sesión desde `manfran-web` es la práctica recomendada — skills de `.claude/commands/` se cargan automáticamente
+- Aclarado el flujo de trabajo para próximas sesiones: `/obsidian-handoff` (entrada), trabajo, `/session-close` (salida)
+- Sin cambios en código — sesión de confirmación y alineación de procesos
+
+**Archivos modificados:**
+- Ninguno (sin cambios en código)
+
+**Pendiente:**
+- Esperar confirmación de Franco/Manuel para stats reales
+- Confirmar datos de contacto finales
+- DNS manfran.com (bloqueante — requiere acceso Google Workspace de Manuel)
