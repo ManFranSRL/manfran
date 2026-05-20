@@ -1,0 +1,18 @@
+:root {
+  --color-black: #1A1A1A;
+  --color-blue: #00A0D8;
+  --color-white: #FFFFFF;
+  --color-blue-dark: #0088B8;
+  --color-blue-light: #33B8E8;
+  --color-gray-900: #111111;
+  --color-gray-800: #1E1E1E;
+  --color-gray-600: #4A4A4A;
+  --color-gray-400: #9A9A9A;
+  --color-gray-100: #F5F5F5;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-blue: 0 0 40px rgba(0, 160, 216, 0.15);
+}

@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme inline {
+  --color-manfran-black: var(--color-black);
+  --color-manfran-blue: var(--color-blue);
+  --color-manfran-blue-dark: var(--color-blue-dark);
+  --color-manfran-blue-light: var(--color-blue-light);
+  --color-manfran-white: var(--color-white);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
