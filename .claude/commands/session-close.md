@@ -59,11 +59,42 @@ git -C "C:\Users\LAUTA\OneDrive\Desktop\Naza\ManFran\manfran-web" add docs/
 git -C "C:\Users\LAUTA\OneDrive\Desktop\Naza\ManFran\manfran-web" commit -m "docs: sync session notes [$(date +%Y-%m-%d)]"
 ```
 
-## 8. Confirmación final
+## 8. Resumen final de sesión
 
-Mostrá un resumen de lo que sincronizaste:
-- ✅ BITACORA.md actualizado y sincronizado con vault
-- ✅ Handoff Notes.md actualizado
-- ✅ Plan Activo.md actualizado
-- ✅ Memoria.md actualizado
-- ✅ Commit creado en repo
+Mostrá en la respuesta un bloque así:
+
+---
+### ✅ Sincronización completada
+
+| Archivo | Estado |
+|---|---|
+| `docs/BITACORA.md` | ✅ Actualizado + commiteado |
+| `Bitácora.md` (vault) | ✅ Sincronizado |
+| `Handoff Notes.md` (vault) | ✅ Actualizado |
+| `Plan Activo.md` (vault) | ✅ Actualizado |
+| `Memoria.md` (vault) | ✅ Actualizado |
+
+---
+
+### 🛠️ Lo que se hizo esta sesión
+[Lista clara y concisa de todo lo trabajado, en lenguaje para el usuario — no técnico puro. Ejemplo: "Se creó el favicon de 32×32", "Se configuró el tema de Obsidian", etc.]
+
+---
+
+### 📋 Lo que queda por hacer
+Tomalo del Plan Activo actualizado. Separado por prioridad:
+
+**🔴 Bloqueantes:**
+[tareas que no se pueden avanzar sin algo externo]
+
+**🟡 Próxima sesión:**
+[tareas listas para hacer en la próxima sesión, ordenadas por prioridad]
+
+**🔵 Más adelante:**
+[tareas de fases futuras]
+
+---
+
+### 💡 Para arrancar la próxima sesión
+Recordale al usuario que ejecute `/obsidian-handoff` al inicio de la próxima sesión para recuperar todo el contexto.
+---
