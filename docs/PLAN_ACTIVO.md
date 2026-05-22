@@ -59,6 +59,25 @@
   - [x] Assets: `logo-emblema.png` y `logo-manfran.svg` en `public/assets/brand/`
   - [x] `constants.ts`: SOCIAL, HERO, MARQUEE_ITEMS, COOKIE, FOOTER
 
+### ✅ Completado en Sesión 6 (2026-05-22)
+- [x] **Footer v3 — refinements finales**
+  - [x] Logo emblema duplicado: h-64 (256px), `self-start object-top`
+  - [x] Layout: logo | grid 3 columnas | social horizontal (`self-start`)
+  - [x] Border-t encima del copyright eliminado
+  - [x] Copyright y links legales en blanco puro
+  - [x] Columna Contacto: texto estático (spans, sin links)
+  - [x] Social icons horizontal, h-11/w-11, iconos h-5/w-5
+  - [x] Gap reducido entre columnas y logo↔big-logo
+  - [x] Jerarquía tipográfica: headers `text-base` > links `text-sm`
+  - [x] Fix: `text-manfran-blue` (token Tailwind v4 correcto)
+- [x] **Hero v3 — Video background**
+  - [x] `<video autoPlay loop muted playsInline>` reemplaza ParticleCanvas
+  - [x] `hero-bg.mp4` (19.1 MB) en `public/assets/video/`
+  - [x] Overlay doble: gris-900/75 + gradiente blue-deep tenue
+- [x] **Botones — Avenir universal**
+  - [x] Regla global CSS: `button { font-family: var(--font-display); font-weight: 700 }`
+  - [x] `Button.tsx`: `font-display font-bold uppercase tracking-wide`
+
 ### 🔄 Próximo — Fase D (secciones internas)
 - [ ] Stats: `font-extrabold` → `font-bold`, `px-6 py-16` → tokens, `max-w-5xl` → `max-w-site`
 - [ ] Services: font-display en eyebrow + heading, padding/container tokens, border opacity sintax fix
@@ -74,9 +93,8 @@
 - [ ] Microinteracciones botones y "Learn more →"
 
 ### 🔲 Pendiente — Post-diseño
-- [ ] Hero video con Higgsfield (cuando Naza aprueba diseño visual completo)
 - [ ] Mobile review y ajustes finos
-- [ ] Integrar video como `<video autoplay loop muted playsinline>` con overlay gradient
+- [ ] Reemplazar hero-bg.mp4 por video final sin watermark (cuando disponible)
 
 ---
 

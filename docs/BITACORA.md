@@ -162,6 +162,52 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
   - Fix overflow horizontal de 6px (Contact section)
   - Estilizar `<select>` con background oscuro (option visibility)
 - Fase E: motion unificado + carrusel logos
-- Hero video con Higgsfield (cuando diseño aprobado)
+- Stats reales + datos de contacto (pendiente Franco/Manuel)
+- DNS manfran.com (bloqueante — pendiente Manuel)
+
+---
+
+## 2026-05-22 — Sesión 6: Footer final, Hero video, Botones Avenir
+
+**Qué se hizo:**
+
+- **Footer — refinements finales (múltiples iteraciones con referencia SVG)**:
+  - Logo emblema duplicado: `h-32` → `h-64` (256px), posicionado con `self-start object-top`
+  - Layout reestructurado: logo | 3 columnas en `grid flex-1` | social icons (`flex-row`, `self-start`)
+  - Eliminada línea horizontal (`border-t`) encima de la fila de copyright
+  - Copyright y links legales en blanco puro (`text-white`)
+  - Columna Contacto: email, teléfono y dirección convertidos a `<span>` estático (sin links, sin underline, sin color — texto informativo únicamente)
+  - Social icons: disposición horizontal (`flex-row gap-3`), tamaño incrementado a `h-11 w-11` / iconos `h-5 w-5`
+  - Espaciado reducido entre copyright y logo gigante: `mt-section-lg` → `mt-10`
+  - Jerarquía tipográfica: títulos de columna `text-base`, links `text-sm` (headers > contenido)
+  - Gap entre columnas reducido: `gap-x-6 lg:gap-x-8`
+  - Fix bug Tailwind v4: `text-[var(--color-blue)]` no resolvía correctamente → cambiado a token registrado `text-manfran-blue` / `hover:text-manfran-blue` / `hover:border-manfran-blue`
+
+- **Hero v3 — Video background**:
+  - Reemplazado `ParticleCanvas` (canvas con partículas) por `<video autoPlay loop muted playsInline>`
+  - Video `hero-bg.mp4` (19.1 MB, 20s, fondo blanco) copiado de `assets/video/` a `public/assets/video/`
+  - Overlay doble para compensar el fondo blanco del video:
+    - Capa 1: `bg-[var(--color-gray-900)]/75` — aplasta el blanco a casi negro
+    - Capa 2: gradiente `from-[var(--color-blue-deep)]/50 via-[var(--color-blue-deep)]/20 to-transparent` — tinte azul MANFRAN tenue
+  - Video verificado en browser: `readyState: 4` (cargado), `paused: false` (reproduciendo)
+
+- **Botones — Avenir Next Condensed en todo el sitio**:
+  - Regla global en `globals.css`: `button { font-family: var(--font-display); font-weight: 700; }` — cubre todos los `<button>` presentes y futuros
+  - `Button.tsx`: reemplazado `font-semibold` (weight 600, faux bold en Avenir) por `font-display font-bold uppercase tracking-wide` (weight 700, el registrado en el TTF)
+  - Navbar "Consultanos", CookieConsent, Quoter tabs ya tenían `font-display` explícito — confirmado sin cambios adicionales
+
+**Archivos modificados:**
+- `src/components/layout/Footer.tsx` — refinements finales completos
+- `src/components/sections/Hero.tsx` — video background, eliminado ParticleCanvas
+- `src/app/globals.css` — regla global `button { font-display }`
+- `src/components/ui/Button.tsx` — `font-display font-bold uppercase tracking-wide`
+- `public/assets/video/hero-bg.mp4` — nuevo (19.1 MB, untracked por tamaño)
+
+**Build status:** TypeScript sin errores (`npx tsc --noEmit` limpio).
+
+**Pendiente:**
+- Fase D: refactor de secciones internas (Stats, Services, WhyUs, Process, Quoter, Contact)
+- Fase E: motion unificado + carrusel logos
+- Mobile review
 - Stats reales + datos de contacto (pendiente Franco/Manuel)
 - DNS manfran.com (bloqueante — pendiente Manuel)
