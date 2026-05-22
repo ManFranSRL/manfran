@@ -118,3 +118,50 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 
 **Corrección registrada al cierre:**
 - Las fuentes oficiales de marca son **Avenir Next Condensed Bold (display)** + **Helvetica (body, light, bold)** — archivos `.ttf` ya presentes en `assets/fonts/`. El one-shot inicial usó Barlow Condensed + Inter desde Google Fonts como placeholder. CLAUDE.md, Auditoría Visual, Handoff Notes y Plan Activo corregidos. Tarea agregada al plan: migrar a `next/font/local` con las fuentes reales durante el refactor (Fase A).
+
+---
+
+## 2026-05-22 — Sesión 5: Rediseño visual Fases A, B y C
+
+**Qué se hizo:**
+
+- **Migración de fuentes (Fase A)**: eliminadas Google Fonts (Barlow Condensed + Inter). Implementadas Avenir Next Condensed Bold y Helvetica (light/regular/bold) desde `assets/fonts/` vía `next/font/local`. Variables `--font-display` y `--font-body` inyectadas en el `<html>`. Corregido conflicto de cascade: `tokens.css` ya no define `--font-display`/`--font-body` (los pisaba con el nombre literal en vez del hash de next/font).
+- **Sistema de tokens v2 (Fase A)**: refactor completo de `src/styles/tokens.css` — escala tipográfica display (2.5–4.5rem), tracking negativo, line-height display 1.05, escala de espaciado section-sm/section/section-lg, gutters (2rem / 5rem), container 1440px, tokens de radius, shadows, easings y durations. Alias en `globals.css` vía bloque `@theme inline`.
+- **Fix crítico de cascade layers**: `globals.css` no emitía la declaración master `@layer theme, base, components, utilities;`. Sin ella, el `* { padding:0; margin:0 }` del Preflight en `@layer base` pisaba todas las utilidades de padding/margin de Tailwind (`px-6`, `py-24`, etc. producían 0). Fix: se agrega la declaración como primera línea. Eliminado `* { padding:0; margin:0 }` hardcodeado que ya venía del one-shot.
+- **Navbar v2 (Fase B)**: reemplazada navbar sticky opaca por navbar con efecto liquid glass (`bg-white/[0.06] backdrop-blur-2xl`). Implementado hide-on-scroll con `useRef` para `lastScrollY`. Integrado componente `<Marquee />` encima del nav bar. Ajustada separación entre ítems de nav. Botón "Consultanos" con sheen glass effect.
+- **Marquee (nuevo, Fase B)**: componente nuevo `src/components/layout/Marquee.tsx`. Animación CSS con `@keyframes marquee { from: translateX(0) to: translateX(-50%) }`. Dos tracks duplicados para loop perfecto. Fix clave: `shrink-0` en el wrapper animado (sin él, el flex parent lo encogía y el loop reiniciaba en posición incorrecta). Colapso con height/opacity al hacer scroll.
+- **Footer v2 (Fase B)**: reemplazado footer genérico. Logo emblema (h-32 w-32) arriba a la izquierda. Grid de 3 columnas (Servicios / Navegación / Contacto), todos los textos en `font-display` (Avenir). Iconos sociales SVG (LinkedIn, Instagram, WhatsApp) arriba a la derecha. Fila de copyright + links legales. Logo gigante `logo-manfran.svg` full-width al fondo. Padding-top 168px en desktop.
+- **Hero v2 (Fase C)**: slogan movido a esquina inferior izquierda (`flex-col justify-end`). Animación MOVEMOS↔ENTREGAMOS reemplazada: descartada `AnimatePresence` de Framer Motion (incompatible con React 19 Strict Mode — quedaba frozen en `opacity:0`). Implementada con CSS puro: `inline-grid`, todas las palabras montadas en la misma celda, `transition-opacity/transform`. Texto reestructurado: línea 1 = palabra animada, línea 2 = "tu carga.", líneas 3-4 en azul MANFRAN.
+- **CookieConsent (nuevo, Fase C)**: componente `src/components/layout/CookieConsent.tsx`. Efecto liquid glass (`bg-white/[0.06] backdrop-blur-2xl`). Delay 900ms, persistencia en `localStorage`. Botón Aceptar (azul + sheen) / Rechazar (negro). Posicionado `fixed bottom-6 right-6 z-[60]`.
+- **Assets de marca**: agregados `public/assets/brand/logo-emblema.png` (5000×5000, fondo transparente) y `public/assets/brand/logo-manfran.svg` (1361×321, logotipo horizontal completo).
+- **constants.ts**: añadidos exports `SOCIAL` (LinkedIn/Instagram/WhatsApp con SVG paths), `HERO`, `MARQUEE_ITEMS`, `COOKIE`, `FOOTER`.
+
+**Archivos modificados:**
+- `src/app/globals.css` — cascade layer fix + @theme inline + keyframe marquee
+- `src/app/layout.tsx` — migración next/font/local (Avenir + Helvetica)
+- `src/app/page.tsx` — import CookieConsent
+- `src/styles/tokens.css` — tokens v2 completo
+- `src/lib/constants.ts` — SOCIAL, HERO, MARQUEE_ITEMS, COOKIE, FOOTER
+- `src/components/layout/Navbar.tsx` — v2 glass + hide-on-scroll + Marquee
+- `src/components/layout/Marquee.tsx` — nuevo
+- `src/components/layout/Footer.tsx` — v2 completo
+- `src/components/layout/CookieConsent.tsx` — nuevo
+- `src/components/sections/Hero.tsx` — v2 slogan bottom-left + animación CSS
+- `public/assets/brand/logo-emblema.png` — nuevo
+- `public/assets/brand/logo-manfran.svg` — nuevo
+- `assets/referencia_hero.svg` — referencia de diseño (untracked)
+- `assets/referencia_footer.svg` — referencia de diseño (untracked)
+
+**Build status al cierre:** `✓ Compiled successfully` — sin errores TypeScript ni ESLint.
+
+**Pendiente:**
+- Fase D: refactor de secciones internas (Stats, Services, WhyUs, Process, Quoter, Contact)
+  - Migrar `font-extrabold` → `font-bold` en todos los componentes (Avenir registrada a weight 700)
+  - Migrar `px-6 py-24 max-w-7xl` → tokens de design system (`px-gutter`, `py-section`, `max-w-site`)
+  - Agregar `font-display` a eyebrows y headings de sección
+  - Fix overflow horizontal de 6px (Contact section)
+  - Estilizar `<select>` con background oscuro (option visibility)
+- Fase E: motion unificado + carrusel logos
+- Hero video con Higgsfield (cuando diseño aprobado)
+- Stats reales + datos de contacto (pendiente Franco/Manuel)
+- DNS manfran.com (bloqueante — pendiente Manuel)

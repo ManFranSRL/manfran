@@ -1,7 +1,7 @@
 # Plan Activo
 
 > Estado mutable de tareas. Actualizar en cada sesión.
-> Ver también: [[Handoff Notes]], [[Bitácora]], [[01-Proyecto Web/Auditoría Visual]]
+> Ver también: [[Handoff Notes]], [[Bitácora]], [[Auditoría Visual]]
 
 ---
 
@@ -11,7 +11,7 @@
 - [x] Estructura de proyecto Next.js 16 + Tailwind v4 + TypeScript
 - [x] CLAUDE.md
 - [x] Assets de marca copiados
-- [x] Tokens CSS y globals.css (v1, a refactorizar)
+- [x] Tokens CSS y globals.css (v1 — reemplazados en Sesión 5)
 - [x] `lib/constants.ts` con todos los textos
 - [x] `lib/utils.ts`
 - [x] layout.tsx con metadatos SEO
@@ -41,36 +41,42 @@
 
 ---
 
-## Fase 1.5: Rediseño visual (NUEVO — prioridad actual)
+## Fase 1.5: Rediseño visual
 
-### 🔄 Próximo
-- [ ] **Higgsfield**: activar `@higgsfield-agent`, generar background del hero (paleta compatible con overlay azul MANFRAN, movimiento sutil estilo Nuvo)
-- [ ] **Migración de fuentes**: reemplazar Barlow Condensed + Inter (Google Fonts, placeholder del one-shot) por **Avenir Next Condensed Bold + Helvetica** desde `assets/fonts/` vía `next/font/local`. Actualizar `layout.tsx`, `tokens.css` y referencias Tailwind.
-- [ ] **Fase A — Sistema de diseño 2.0**: refactor `src/styles/tokens.css`
-  - Escala tipográfica nueva con fuentes oficiales (display 48–60px Avenir Next Condensed Bold, tracking -0.02em, line-height 1.0–1.1; body Helvetica)
-  - Escala de espaciado (80 / 96 / 192 px)
-  - Container `max-w-[1440px]` + padding lateral 32px / nav 80px
-  - Tokens de motion (easings, durations unificados)
-  - Documentar en `docs/DESIGN_SYSTEM.md`
-- [ ] **Fase B — Esqueleto**
-  - Refactor Navbar: fixed transparente, hide-on-scroll, mega-menu desktop con descripciones por item
-  - Refactor Footer: cream gigante, 4 columnas + social + logo grande, `padding-top: 168px`
-- [ ] **Fase C — Hero + Stats**
-  - Integrar background Higgsfield como `<video autoplay loop muted playsinline>`
-  - Overlay `linear-gradient(transparent → rgba(0,160,216,0.4) → #003F5C)`
-  - H1 60/64 con tracking -1.2px, 1 solo CTA invertido
-  - Stats band azul oscuro continuo (sin corte), números estáticos display gigantes (sin counter-up)
-- [ ] **Fase D — Sections**
-  - Services como tiles sin shadow, `rounded-2xl`, separación solo por color
-  - WhyUs con headline editorial 48/48
-  - Process timeline rediseñado
-  - Quoter con tipografía y spacing nuevos
-  - Contact con CTA "wrap" final antes del footer
-- [ ] **Fase E — Motion**
-  - Presets Framer Motion unificados (durations, easings)
-  - Carrusel de logos clientes (dos filas opuestas)
-  - Microinteracciones de botones y "Learn more →"
-- [ ] Mobile: review y ajustes finos
+### ✅ Completado en Sesión 5 (2026-05-22)
+- [x] **Fase A — Sistema de diseño 2.0**
+  - [x] Migración de fuentes: `next/font/local` con Avenir Next Condensed Bold + Helvetica
+  - [x] `tokens.css` v2 (escala tipográfica, spacing, radius, easings, shadows)
+  - [x] `globals.css` v2: cascade layer fix + `@theme inline` + `@keyframes marquee`
+  - [x] Fix `--font-display`/`--font-body` en tokens.css (conflicto con next/font hash)
+- [x] **Fase B — Esqueleto**
+  - [x] Navbar v2: liquid glass, hide-on-scroll, Marquee integrada, gap-12 nav items
+  - [x] Marquee v1: CSS keyframe, loop sin saltos, collapse on scroll, `shrink-0` fix
+  - [x] Footer v2: logo emblema + 3 columnas + social SVG + logo gigante + copyright/legal
+- [x] **Fase C — Hero + UI**
+  - [x] Hero v2: slogan bottom-left, animación CSS crossfade (sin AnimatePresence)
+  - [x] CookieConsent: liquid glass, delay 900ms, localStorage persistence
+  - [x] Assets: `logo-emblema.png` y `logo-manfran.svg` en `public/assets/brand/`
+  - [x] `constants.ts`: SOCIAL, HERO, MARQUEE_ITEMS, COOKIE, FOOTER
+
+### 🔄 Próximo — Fase D (secciones internas)
+- [ ] Stats: `font-extrabold` → `font-bold`, `px-6 py-16` → tokens, `max-w-5xl` → `max-w-site`
+- [ ] Services: font-display en eyebrow + heading, padding/container tokens, border opacity sintax fix
+- [ ] WhyUs: ídem Services
+- [ ] Process: ídem Services
+- [ ] Quoter: ídem + `<select>` background oscuro para opciones visibles
+- [ ] Contact: fix overflow horizontal 6px, tokens, font-display en eyebrow
+- [ ] Revisar que no quede ningún `font-extrabold` en secciones (Avenir weight 700 máximo)
+
+### 🔲 Pendiente — Fase E (motion)
+- [ ] Presets Framer Motion unificados (durations, easings) en archivo compartido
+- [ ] Carrusel de logos clientes (dos filas opuestas, auto-scroll)
+- [ ] Microinteracciones botones y "Learn more →"
+
+### 🔲 Pendiente — Post-diseño
+- [ ] Hero video con Higgsfield (cuando Naza aprueba diseño visual completo)
+- [ ] Mobile review y ajustes finos
+- [ ] Integrar video como `<video autoplay loop muted playsinline>` con overlay gradient
 
 ---
 
