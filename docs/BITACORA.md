@@ -211,3 +211,159 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Mobile review
 - Stats reales + datos de contacto (pendiente Franco/Manuel)
 - DNS manfran.com (bloqueante — pendiente Manuel)
+
+---
+
+## 2026-05-22 — Sesión 7: Fase D (secciones internas), Fase E setup, Services pin-scroll
+
+**Qué se hizo:**
+
+- **Fase D — Migración de tokens en todas las secciones internas:**
+  - `Stats.tsx`: `py-section-sm px-gutter`, `max-w-site`, `font-bold`, `text-manfran-blue`
+  - `WhyUs.tsx`: `py-section px-gutter`, `max-w-site`, eyebrow `font-display font-bold text-manfran-blue`, `bg-manfran-blue`
+  - `Process.tsx`: ídem + `border-manfran-blue/40 bg-manfran-blue/10` en círculos, step numbers `text-manfran-blue font-bold`
+  - `Quoter.tsx`: `py-section px-gutter`, selects `bg-manfran-gray-900`, tab active `text-manfran-blue border-manfran-blue bg-manfran-blue/5`. **Feedback de Franco implementado**: ServiceForm expandido con campos cargoDescription/weight/volume; CargoForm expandido con origin/destination.
+  - `Contact.tsx`: `py-section px-gutter`, `max-w-site`, `overflow-x-hidden`, form column `min-w-0`, todos los colores tokenizados
+  - `globals.css`: añadido `--width-site` y grises adicionales al bloque `@theme inline` para habilitar `max-w-site` y `bg-manfran-gray-900`
+
+- **Fase E — Setup de motion/Lenis:**
+  - Desinstalado `framer-motion`, instalado `motion` (motion.dev, sucesor del mismo autor, API idéntica, mejor rendimiento)
+  - Todos los imports actualizados de `'framer-motion'` → `'motion/react'`
+  - `SmoothScroll.tsx` (nuevo): `ReactLenis` con `duration: 1.2`, easing exponencial, `smoothWheel: true`. Envuelve `{children}` en `layout.tsx`. Reemplaza `html { scroll-behavior: smooth }`.
+  - `globals.css`: añadido `@keyframes typewriter { from: width 0; to: width 100% }`. Eliminado `html { scroll-behavior: smooth }`. Añadida regla global `button { font-family: var(--font-display); font-weight: 700 }`.
+
+- **Services v2 — Rediseño completo pin-scroll horizontal:**
+  - Descartado grid de tarjetas → reemplazado por sección sticky con scroll horizontal (5 tarjetas × 100vh = 500vh total)
+  - Patrón sticky: outer div `height: 5×100vh`, inner div `position: sticky; top: 0; height: 100vh; overflow: hidden`
+  - `useScroll` + `useTransform` para mapear `scrollYProgress [0,1]` → `x [0vw, -400vw]`
+  - Fondos: array `BG_GRADIENTS[]` con 5 gradientes lineales por servicio (azul-portuario, navy-nocturno, negro-púrpura, ámbar-oscuro, teal-verde)
+  - Vignettes: bottom (`from-black/85`) + left (`from-black/50`) para legibilidad de texto
+  - Contenido: título `clamp(3.5rem, 8vw, 7rem)` en `bottom-20 left-16`, descripción `text-white/55`
+  - `ProgressDots`: 5 dots con `useMotionValueEvent`, dot activo `w-6 h-1.5 bg-manfran-blue` (elongado)
+  - Mobile fallback: stack vertical con animación `whileInView`
+  - MANFRAN emblema `opacity-[0.08]` en `bottom-20 right-16`
+
+- **Services v3 — Retouches:**
+  - `TypewriterEyebrow`: componente con `useInView` + CSS `@keyframes typewriter` + `steps(text.length, end)`. Tamaño `clamp(0.9rem, 1.4vw, 1.1rem)`, `letterSpacing: 0.22em`. Texto más grande y animado.
+  - Eliminados contadores `"01 — 05"` por servicio
+  - Eliminado dash azul (`w-14 h-px bg-manfran-blue`) debajo de cada servicio
+  - Descripción: añadido `font-display` → Avenir Next Condensed en vez de Helvetica
+  - Eliminado scroll hint ("SCROLL ——") del desktop
+
+- **Prompts de generación IA para imágenes de fondo** (5 prompts, uno por servicio, con paletas de color exactas de los gradientes): generados y documentados para uso con Midjourney/FLUX. Especifican no humanos en primer plano, logo MANFRAN integrado en la escena.
+
+**Archivos modificados:**
+- `src/app/globals.css` — typewriter keyframe, select option bg, button global rule
+- `src/app/layout.tsx` — SmoothScroll wrapper
+- `src/components/layout/SmoothScroll.tsx` — nuevo (Lenis)
+- `src/components/sections/Stats.tsx` — tokens v2
+- `src/components/sections/Services.tsx` — rediseño completo (pin-scroll + TypewriterEyebrow + ProgressDots)
+- `src/components/sections/WhyUs.tsx` — tokens v2
+- `src/components/sections/Process.tsx` — tokens v2
+- `src/components/sections/Quoter.tsx` — tokens v2 + campos Franco feedback
+- `src/components/sections/Contact.tsx` — tokens v2 + overflow fix
+
+**Incidente técnico resuelto:**
+- Caché de Next.js no invalidaba imports renombrados de `framer-motion` → `motion`. Resuelto con `rmdir /s /q .next` y reinicio del servidor.
+
+**Pendiente:**
+- Obtener imágenes reales para Services (prompts listos, generación pendiente)
+- Carrusel de logos clientes (bloqueado — pendiente permiso de Franco)
+- DNS manfran.com (bloqueante — pendiente Manuel)
+
+---
+
+## 2026-05-26 — Sesión 8: Services con imágenes reales, spotlight hover, mobile pin-scroll
+
+**Qué se hizo:**
+
+- **Services — Imágenes reales de IA por servicio:**
+  - 5 imágenes `_desktop.png` + 5 `_mobile.png` generadas (IA, con paletas que replican los gradientes de cada tarjeta)
+  - Copiadas de `assets/services/` a `public/assets/services/` para servir como rutas estáticas
+  - `Image` con `fill` + `object-cover` como base de cada tarjeta
+
+- **Spotlight / torch hover effect (desktop):**
+  - Cada `ServiceCard` trackea posición del mouse con `onMouseMove` relativo al `getBoundingClientRect` de la tarjeta
+  - Overlay único `position: absolute; inset: 0`: en reposo = `rgba(0,0,0,0.60)` con transición 0.6s; en hover = `radial-gradient(circle 320px at Xpx Ypx, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.62) 100%)` sin transición (inmediato al movimiento)
+  - Al salir el mouse: vuelve suavemente al overlay sólido
+  - Vignettes de legibilidad (bottom + left) permanecen en `z-[2]`, sobre el spotlight
+
+- **Services mobile unificado (mismo pin-scroll que desktop):**
+  - Eliminado el stack vertical `md:hidden`
+  - Un único `containerRef` de `5×100vh` para todas las resoluciones
+  - `ServiceCard` renderiza ambas imágenes con CSS `md:hidden` / `hidden md:block`
+  - Posicionamiento del contenido responsive: `bottom-16 left-6` en mobile, `bottom-20 left-16` en desktop
+  - Título con `clamp(2.8rem, 8vw, 7rem)` (arranca más chico en mobile)
+  - Spotlight: sin efecto en touch (no hay `onMouseMove`), overlay estático al 60%
+
+- **Retouches en Services:**
+  - Eliminados números watermark grandes (01, 02, ...) de cada tarjeta
+  - Eliminado logo emblema MANFRAN watermark de cada tarjeta
+  - Descripción con `font-normal` (Avenir sin bold)
+  - Overlay reducido de `0.80` → `0.60` para que la imagen respire más
+
+**Archivos modificados:**
+- `src/components/sections/Services.tsx` — imágenes reales, spotlight, mobile unificado, retouches
+- `public/assets/services/` — 10 imágenes nuevas (5 desktop + 5 mobile, untracked por tamaño)
+
+**Build status:** Sin errores de consola. Verificado en Chrome DevTools MCP (desktop 1440px + mobile 390px emulado).
+
+**Pendiente:**
+- Investigación scroll effects → aplicar a WhyUs, Process (sticky cards + clip-path reveal)
+- Carrusel doble de logos clientes (bloqueado — pendiente permiso Franco)
+- DNS manfran.com (bloqueante — pendiente Manuel)
+- Stats reales + datos de contacto (pendiente Franco/Manuel)
+
+---
+
+## 2026-05-26 — Process redesign, fades entre secciones, Quoter con background, sticky footer reveal
+
+**Qué se hizo:**
+
+- **Process v3 — Timeline horizontal con scroll effects:**
+  - Reescrito desde cero. Layout horizontal en desktop con 5 círculos conectados por línea, texto debajo de cada círculo. Mobile vertical con círculos a la izquierda y texto a la derecha.
+  - Círculos con efecto liquid-glass: fondo sólido `#080808` (matchea bg de la sección) + capa de gradiente radial azul + gradiente especular top-left para simular brillo.
+  - Borde y glow scroll-driven: cada círculo arranca con borde `rgba(0,160,216,0.18)` y se enciende a `rgba(0,160,216,0.75)` con box-shadow azul cuando el scroll alcanza su slot.
+  - Línea conectora: track base `white/10` + overlay azul iluminado que crece de izquierda a derecha con `useTransform(scrollYProgress, [0.02, 0.92], ['0%', '100%'])`. Renderizada antes de los círculos en el DOM para que los círculos la tapen limpiamente (sin backdrop-blur que la difuminara).
+  - Texto de cada paso: opacidad 0.1 → 1 + translateY 18 → 0 driven por scroll thresholds escalonados.
+  - Sin hover effect (removido por pedido del usuario).
+
+- **Sistema de fades entre todas las secciones:**
+  - Cada sección con bg distinto tiene un gradiente top/bottom que funde con el color del vecino. Cadena: Hero (`#1A1A1A`) → Stats (`#111111`) → Services (`#1A1A1A`) → WhyUs (`#111111`) → Process (`#080808`) → Quoter (img + `#080808` fades) → Contact (`#1A1A1A`) → Footer (`#111111`).
+  - Casos especiales: el salto de WhyUs (`#111111`) → Process (`#080808`) se maneja con un solo fade `h-56` en el top de Process (en lugar de dos gradientes que colisionaban en el borde).
+  - Todos los fades usan `pointer-events-none` y z-index entre 1-30 según contexto.
+
+- **Quoter v3 — Background image + glass card:**
+  - Imagen `background_quoter.jpg` (2752×1536) movida a `public/assets/`. Renderizada con `next/image fill + object-cover` cubriendo toda la sección.
+  - Overlay en dos capas estilo Hero pero en `#1A1A1A`: capa base `/50` uniforme + gradiente top `h-[40%]` que llega a transparente. Más fades de fusión top/bottom (h-40) con `#080808` para integrar con Process arriba.
+  - Card del formulario migrada a liquid glass: `bg-white/[0.06] backdrop-blur-2xl border border-white/[0.10]` (mismo lenguaje que Navbar/CookieConsent).
+  - Inputs cambiados de `bg-manfran-gray-900` → `bg-black/40` para contraste sobre el glass.
+  - Layout asimétrico: contenedor del formulario + header alineados a la derecha (`ml-auto max-w-[620px]`) para que el logo MANFRAN de los contenedores quede visible a la izquierda.
+  - Labels de los campos cambiados a `font-display` (Avenir Next Condensed) en blanco puro.
+
+- **Sticky footer reveal:**
+  - Patrón a la Sensei.tech: `<main className="relative z-[1]">` cubre el footer; `<footer className="sticky bottom-0 z-0">` queda detrás. Al llegar al final del scroll, el footer se revela desde abajo mientras Contact sigue visible.
+  - Footer compactado para entrar en viewport: top padding `168px → 48px`, logo emblema `256px → 160px`, gap entre filas `56px → 40px`, margin antes copyright `96px → 40px`, etc. (~340px menos de altura total).
+
+**Archivos modificados:**
+- `src/components/sections/Process.tsx` — rewrite completo
+- `src/components/sections/Quoter.tsx` — background image + glass card + alineación derecha + labels Avenir
+- `src/components/sections/Hero.tsx` — fade bottom hacia Stats
+- `src/components/sections/Stats.tsx` — fades top/bottom
+- `src/components/sections/Services.tsx` — fades top/bottom
+- `src/components/sections/WhyUs.tsx` — fade top
+- `src/components/sections/Contact.tsx` — fades top/bottom
+- `src/components/layout/Footer.tsx` — sticky + spacing compactado
+- `src/app/page.tsx` — main wrapper con `relative z-[1]`
+- `public/assets/background_quoter.jpg` — imagen nueva (untracked)
+
+**Build status:** TypeScript sin errores en cada paso. Verificado en preview server.
+
+**Pendiente:**
+- Regenerar `background_quoter.jpg` en 4K para máxima nitidez (TODO marcado en código)
+- Mobile review fino de toda la landing
+- Presets Motion unificados en `lib/motion.ts`
+- Microinteracciones botones/links
+- Carrusel doble de logos clientes (bloqueado — Franco)
+- DNS manfran.com (bloqueante — Manuel)
+- Stats reales + datos de contacto (Franco/Manuel)
