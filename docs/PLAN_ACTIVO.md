@@ -46,28 +46,38 @@
 - [x] Services — Retouches: sin watermarks, descripción font-normal, overlay 0.60
 
 ### ✅ Completado en Sesión 9 (2026-05-26)
-- [x] **WhyUs v2 — Grid asimétrico + clip-path reveal scroll-driven + liquid glass** (cards con backdrop-blur sobre bg con glow blobs)
-- [x] **Process v3 — Timeline horizontal**: 5 círculos liquid-glass conectados por línea iluminada scroll-driven, layout asimétrico con texto debajo (desktop) o derecha (mobile)
-- [x] **Quoter v3 — Background image + glass card**: imagen `background_quoter.jpg` 2752×1536, overlay doble negro `#1A1A1A`, card form liquid glass, alineación derecha para no tapar logo MANFRAN de la imagen, labels Avenir Bold blanco
-- [x] **Sistema de fades entre todas las secciones**: cadena de gradientes top/bottom que funden con el color del vecino (Hero → Stats → Services → WhyUs → Process → Quoter → Contact → Footer)
-- [x] **Sticky footer reveal** estilo Sensei.tech: `<main relative z-[1]>` + `<footer sticky bottom-0 z-0>`, compatible con Lenis
-- [x] **Footer v4 — spacing compactado** (~340px menos altura) para entrar en viewport al revelar
+- [x] **WhyUs v2 — Grid asimétrico + clip-path reveal scroll-driven + liquid glass**
+- [x] **Process v3 — Timeline horizontal**: 5 círculos liquid-glass, línea scroll-driven illumination
+- [x] **Quoter v3 — Background image + glass card**: alineación derecha, labels Avenir
+- [x] **Sistema de fades entre todas las secciones**
+- [x] **Sticky footer reveal** estilo Sensei.tech
+- [x] **Footer v4 — spacing compactado**
+
+### ✅ Completado en Sesión 10 (2026-05-27)
+- [x] **ClientsCarousel — Doble marquee**: 2 filas opuestas, hover-pause por fila, loop seamless, 4 logos
+- [x] **Stats v3 — Full black**: bg #000, números Avenir grandes, labels Avenir uppercase
+- [x] **Hero fade corregido**: `to-[#000000]` (antes `to-[#111111]`)
+- [x] **Transición carousel→Services corregida**: negro puro, sin franja azul
+- [x] **Services eyebrow fix**: stacking context resuelto, "NUESTROS SERVICIOS" visible en posición original
 
 ---
 
-## 🔄 Próximo
+## 🔄 Próximo — En orden de prioridad
 
-### Prioridad alta
-- [ ] **Regenerar `background_quoter.jpg` en 4K** (3840×2160) para máxima nitidez en pantallas grandes — TODO marcado en código de Quoter
+### 🔴 Revisión posible (sujeta a feedback)
+- [ ] **Revisiones visuales puntuales** — el usuario dio el diseño por terminado pero mencionó que puede haber cambios.
+
+### 🟡 Prioridad alta
 - [ ] **Mobile review fino** (toda la landing)
+- [ ] **Regenerar `background_quoter.jpg` en 4K** (3840×2160) — TODO marcado en código de Quoter
 
-### Prioridad media
+### 🟡 Prioridad media
+- [ ] Agregar más logos al carrusel (editar `CLIENTS` en `constants.ts` + copiar a `public/assets/clients/`)
+- [ ] Reemplazar hero-bg.mp4 por video final sin watermark
+
+### 🔵 Baja prioridad / cosmético
 - [ ] Presets Motion unificados en `lib/motion.ts`
 - [ ] Microinteracciones botones y links
-- [ ] **Carrusel doble de logos clientes** — bloqueado hasta permiso de Franco
-
-### Pendiente — Post-diseño
-- [ ] Reemplazar hero-bg.mp4 por video final sin watermark
 
 ---
 
@@ -80,7 +90,7 @@
 - [ ] **DNS manfran.com** — esperar a Manuel (Google Workspace)
   - CNAME: `www` → `417ddb1d3a6e551e.vercel-dns-017.com.`
   - A: `@` → `216.198.79.1`
-- [ ] **Carrusel logos clientes** — esperar permiso de Franco
+- [ ] **Stats + contacto reales** — esperar a Franco/Manuel
 
 ---
 

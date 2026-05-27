@@ -367,3 +367,61 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Carrusel doble de logos clientes (bloqueado — Franco)
 - DNS manfran.com (bloqueante — Manuel)
 - Stats reales + datos de contacto (Franco/Manuel)
+
+---
+
+## 2026-05-27 — Sesión 10: Doble carrusel de logos + refinamiento visual Stats/Hero/Services
+
+**Qué se hizo:**
+
+- **Doble carrusel de clientes (nuevo componente `ClientsCarousel.tsx`):**
+  - 2 filas de logos que scrollean en direcciones opuestas (izquierda y derecha)
+  - 4 logos copiados de `assets/carousel/` a `public/assets/clients/`: Diesel Tellier (PNG), Grupo Eslabón (PNG), Guido (SVG), Marcela Koury (SVG)
+  - Hover-pause independiente por fila: al parar el mouse sobre una fila, esa fila se pausa; la otra sigue moviéndose
+  - Loop seamless corregido: ambos tracks dentro de la misma fila son idénticos (fix crítico — tener contenido distinto en los dos tracks rompía el `translateX(-50%)` y generaba un corte visible al reiniciar). El offset visual entre filas se aplica a nivel de fila, no de track.
+  - Duración 90s (relanzado de 45s para velocidad más suave)
+  - `invert: true` en Diesel Tellier: logo oscuro invisible sobre bg negro → `brightness(0) invert(1)` lo convierte a silueta blanca
+  - Fades laterales `from-[#000000]` para entrada suave de logos
+  - Título "Confían en MANFRAN" — Avenir, blanco, uppercase, tamaño pequeño (eyebrow style)
+  - Insertado entre Stats y Services en `page.tsx`
+
+- **Stats v3 — full black aesthetic:**
+  - Fondo cambiado de `#111111` → `#000000` (negro puro, referencia Nomenclator.com.ar)
+  - Números: `clamp(2.5rem, 4.5vw, 4rem)` con `leading-none` para evitar recorte (era clamp 3.5–6rem)
+  - Labels: `font-display` Avenir, uppercase, `tracking-[0.22em]`, white/55 (antes Helvetica light)
+  - Padding: `pt-section pb-10` — se reduce el gap inferior hacia el carrusel
+  - Fade superior removido: Hero ya termina en negro puro, fluye sin corte
+
+- **Hero → Stats fade corregido:**
+  - Fade inferior de Hero cambiado de `to-[#111111]` → `to-[#000000]` h-40, para coincidir con el nuevo bg negro puro de Stats
+
+- **Transición carousel → Services:**
+  - Fallo inicial: carousel funde a `#012447` (azul) y Services arranca desde ese color → franja azul saturada visible
+  - Fix: ambos lados usan negro puro `#000000` (carousel bottom `to-[#000000]` h-48, Services top `from-[#000000]` h-48)
+
+- **Services — "NUESTROS SERVICIOS" visible sobre el overlay (fix de stacking context):**
+  - Causa raíz: `position: sticky` crea su propio stacking context. Con z:auto en el parent, todo lo que estuviera dentro del sticky perdía contra z-30 del section, sin importar el z-index interno del eyebrow.
+  - Fix: ambas fades de sección (top/bottom) se movieron dentro del `<div sticky>`. Ahora eyebrow (z-35) y fades (z-30) comparten el mismo stacking context → eyebrow visible sobre el gradiente.
+  - Eyebrow vuelve a `top-6 left-6 md:top-10 md:left-16` (posición original, esquina superior izquierda)
+  - Una sola instancia en el sticky wrapper con `useInView({ once: true })` → anima solo en la primera card (Importación), no en cada tarjeta
+
+**Archivos modificados:**
+- `src/components/sections/ClientsCarousel.tsx` — nuevo componente
+- `src/components/sections/Stats.tsx` — bg negro, números más pequeños, labels Avenir, padding reducido
+- `src/components/sections/Hero.tsx` — fade inferior `to-[#000000]` h-40
+- `src/components/sections/Services.tsx` — fades dentro del sticky, eyebrow stacking context fix
+- `src/lib/constants.ts` — nuevo export `CLIENTS` con 4 logos + flag `invert`
+- `src/app/page.tsx` — import + inserción de `ClientsCarousel`
+- `public/assets/clients/` — 4 logos (untracked)
+
+**Estado al cierre:** La landing está **visualmente terminada**. El usuario dio explícitamente por finalizado el diseño web, con nota de que puede haber revisiones puntuales. Bloqueantes externos persisten (DNS, contenido real).
+
+**Build status:** TypeScript sin errores. Verificado por eval de DOM (screenshots del preview tool time-outean por carga del video + Lenis + marquees).
+
+**Pendiente:**
+- Regenerar `background_quoter.jpg` en 4K (TODO marcado en código de Quoter)
+- Mobile review fino de toda la landing (posible en próximas sesiones)
+- DNS manfran.com (bloqueante — Manuel)
+- Stats + contacto reales (bloqueante — Franco/Manuel)
+- Video hero sin watermark (post-diseño)
+- Fase 2: automatizaciones backend
