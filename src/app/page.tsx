@@ -1,7 +1,9 @@
-import { Navbar } from '@/components/layout/Navbar'
+﻿import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { CookieConsent } from '@/components/layout/CookieConsent'
 import { Hero } from '@/components/sections/Hero'
 import { Stats } from '@/components/sections/Stats'
+import { ClientsCarousel } from '@/components/sections/ClientsCarousel'
 import { Services } from '@/components/sections/Services'
 import { WhyUs } from '@/components/sections/WhyUs'
 import { Process } from '@/components/sections/Process'
@@ -12,9 +14,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="relative z-[1]">
         <Hero />
         <Stats />
+        <ClientsCarousel />
         <Services />
         <WhyUs />
         <Process />
@@ -22,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <CookieConsent />
     </>
   )
 }

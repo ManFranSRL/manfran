@@ -1,18 +1,22 @@
-import type { Metadata } from 'next'
-import { Barlow_Condensed, Inter } from 'next/font/google'
+﻿import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import './globals.css'
 import { SITE } from '@/lib/constants'
+import { SmoothScroll } from '@/components/layout/SmoothScroll'
 
-const barlowCondensed = Barlow_Condensed({
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+const avenirNextCondensedBold = localFont({
+  src: '../../assets/fonts/avenir-next-condensed-bold.ttf',
+  weight: '700',
   variable: '--font-display',
   display: 'swap',
 })
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
+const helvetica = localFont({
+  src: [
+    { path: '../../assets/fonts/helvetica-light.ttf', weight: '300' },
+    { path: '../../assets/fonts/Helvetica.ttf', weight: '400' },
+    { path: '../../assets/fonts/Helvetica-Bold.ttf', weight: '700' },
+  ],
   variable: '--font-body',
   display: 'swap',
 })
@@ -48,8 +52,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${barlowCondensed.variable} ${inter.variable}`}>
-      <body>{children}</body>
+    <html lang="es" className={`${avenirNextCondensedBold.variable} ${helvetica.variable}`}>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   )
 }

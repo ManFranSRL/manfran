@@ -1,7 +1,7 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView } from 'motion/react'
 import { STATS } from '@/lib/constants'
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
@@ -33,8 +33,9 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
 export function Stats() {
   return (
-    <section className="bg-[var(--color-gray-900)] border-y border-white/5 py-16 px-6">
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="relative bg-[#000000] pt-section pb-10 px-gutter overflow-hidden">
+      {/* Sin fade superior: el Hero ya termina en #000000 y fluye sin corte. */}
+      <div className="max-w-site mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -44,10 +45,15 @@ export function Stats() {
             transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center text-center"
           >
-            <span className="font-display text-4xl md:text-5xl font-extrabold text-[var(--color-blue)] leading-none">
+            <span
+              className="font-display font-bold text-manfran-blue leading-none"
+              style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)' }}
+            >
               <CountUp target={stat.value} suffix={stat.suffix} />
             </span>
-            <span className="text-white/50 text-sm mt-2 font-body">{stat.label}</span>
+            <span className="font-display font-bold uppercase text-white/55 text-xs md:text-sm tracking-[0.22em] mt-3">
+              {stat.label}
+            </span>
           </motion.div>
         ))}
       </div>

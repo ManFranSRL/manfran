@@ -1,18 +1,55 @@
 :root {
+  /* Color — marca */
   --color-black: #1A1A1A;
   --color-blue: #00A0D8;
   --color-white: #FFFFFF;
   --color-blue-dark: #0088B8;
   --color-blue-light: #33B8E8;
+
+  /* Color — azul profundo para bandas oscuras (blend hero → stats) */
+  --color-blue-deep: #003F5C;
+
+  /* Color — neutros */
   --color-gray-900: #111111;
   --color-gray-800: #1E1E1E;
   --color-gray-600: #4A4A4A;
   --color-gray-400: #9A9A9A;
   --color-gray-100: #F5F5F5;
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --color-gray-50: #F7F8FA;
+
+  /* Tipografía — escala display (Avenir Next Condensed Bold) */
+  --text-display-sm: 2.5rem;   /* 40px */
+  --text-display-md: 3rem;     /* 48px */
+  --text-display-lg: 3.75rem;  /* 60px */
+  --text-display-xl: 4.5rem;   /* 72px */
+
+  /* Tipografía — tracking y line-height */
+  --tracking-display: -0.02em;
+  --leading-display: 1.05;
+  --leading-body: 1.5;
+
+  /* Espaciado — ritmo vertical asimétrico (Nuvo: 80 / 96 / 192) */
+  --space-section-sm: 5rem;    /* 80px */
+  --space-section: 6rem;       /* 96px */
+  --space-section-lg: 12rem;   /* 192px */
+  --space-gutter: 2rem;        /* 32px — padding lateral */
+  --space-gutter-nav: 5rem;    /* 80px — padding lateral navbar */
+
+  /* Layout */
+  --container-max: 1440px;
+
+  /* Radios */
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-md: 8px;    /* botones */
+  --radius-lg: 16px;   /* cards */
+
+  /* Sombras — solo glow azul, sin elevation */
   --shadow-blue: 0 0 40px rgba(0, 160, 216, 0.15);
+
+  /* Motion — easings y durations unificados */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.2s;
+  --duration-base: 0.4s;
+  --duration-slow: 0.7s;
 }

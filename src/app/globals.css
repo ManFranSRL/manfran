@@ -1,35 +1,98 @@
+@layer theme, base, components, utilities;
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
 @theme inline {
+  /* Color */
   --color-manfran-black: var(--color-black);
   --color-manfran-blue: var(--color-blue);
   --color-manfran-blue-dark: var(--color-blue-dark);
   --color-manfran-blue-light: var(--color-blue-light);
+  --color-manfran-blue-deep: var(--color-blue-deep);
   --color-manfran-white: var(--color-white);
+  --color-manfran-gray-50: var(--color-gray-50);
+  --color-manfran-gray-100: var(--color-gray-100);
+
+  /* Tipografía */
   --font-display: var(--font-display);
   --font-body: var(--font-body);
-}
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  --text-display-sm: var(--text-display-sm);
+  --text-display-sm--line-height: var(--leading-display);
+  --text-display-sm--letter-spacing: var(--tracking-display);
+  --text-display-md: var(--text-display-md);
+  --text-display-md--line-height: var(--leading-display);
+  --text-display-md--letter-spacing: var(--tracking-display);
+  --text-display-lg: var(--text-display-lg);
+  --text-display-lg--line-height: var(--leading-display);
+  --text-display-lg--letter-spacing: var(--tracking-display);
+  --text-display-xl: var(--text-display-xl);
+  --text-display-xl--line-height: var(--leading-display);
+  --text-display-xl--letter-spacing: var(--tracking-display);
 
-html {
-  scroll-behavior: smooth;
+  /* Espaciado */
+  --spacing-section-sm: var(--space-section-sm);
+  --spacing-section: var(--space-section);
+  --spacing-section-lg: var(--space-section-lg);
+  --spacing-gutter: var(--space-gutter);
+  --spacing-gutter-nav: var(--space-gutter-nav);
+
+  /* Layout */
+  --container-site: var(--container-max);
+  --width-site: var(--container-max);
+
+  /* Grises adicionales para uso con opacidad */
+  --color-manfran-gray-900: var(--color-gray-900);
+  --color-manfran-gray-800: var(--color-gray-800);
+  --color-manfran-gray-600: var(--color-gray-600);
+  --color-manfran-gray-400: var(--color-gray-400);
+
+  /* Radios */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  /* Motion */
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
 }
 
 body {
   background: var(--color-black);
   color: var(--color-white);
   font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Regla global: todos los botones usan Avenir Next Condensed Bold */
+button {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 ::selection {
   background: var(--color-blue);
   color: var(--color-white);
+}
+
+select option {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

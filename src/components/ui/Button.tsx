@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { cn } from '@/lib/utils'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
@@ -14,7 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          'inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-blue)] disabled:opacity-50 disabled:pointer-events-none',
+          'inline-flex items-center justify-center font-display font-bold uppercase tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-blue)] disabled:opacity-50 disabled:pointer-events-none',
           {
             'bg-[var(--color-blue)] text-white hover:bg-[var(--color-blue-dark)] shadow-[0_0_20px_rgba(0,160,216,0.3)] hover:shadow-[0_0_30px_rgba(0,160,216,0.5)]':
               variant === 'primary',
