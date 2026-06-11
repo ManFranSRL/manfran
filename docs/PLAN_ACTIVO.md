@@ -60,6 +60,13 @@
 - [x] **Transición carousel→Services corregida**: negro puro, sin franja azul
 - [x] **Services eyebrow fix**: stacking context resuelto, "NUESTROS SERVICIOS" visible en posición original
 
+### ✅ Completado en Sesión 11 (2026-06-11)
+- [x] **DNS + dominio `manfran.com` configurado** — web en vivo en https://manfran.com 🎉
+  - Se descubrió que el DNS NO se gestiona en admin.google.com sino en **Squarespace** (dominio registrado vía Google Domains → migrado a Squarespace; nameservers `ns-cloud-*.googledomains.com`)
+  - Borrados en Squarespace: 4 registros A → Squarespace (198.185.159.x / 198.49.23.x) + CNAME `www` → `ext-sq.squarespace.com`
+  - Agregados: A `@` → `216.198.79.1` | CNAME `www` → `417ddb1d3a6e551e.vercel-dns-017.com`
+  - Intactos: MX (Google Workspace), TXT (SPF/DKIM/verificación), CNAME `_domainconnect`
+
 ---
 
 ## 🔄 Próximo — En orden de prioridad
@@ -87,9 +94,7 @@
 - [ ] Contenido final de todos los textos
 
 ## ⏳ Bloqueantes
-- [ ] **DNS manfran.com** — esperar a Manuel (Google Workspace)
-  - CNAME: `www` → `417ddb1d3a6e551e.vercel-dns-017.com.`
-  - A: `@` → `216.198.79.1`
+- [x] ~~**DNS manfran.com**~~ — ✅ RESUELTO (Sesión 11, 2026-06-11). Web en vivo. DNS gestionado en Squarespace, no en Google Workspace.
 - [ ] **Stats + contacto reales** — esperar a Franco/Manuel
 
 ---

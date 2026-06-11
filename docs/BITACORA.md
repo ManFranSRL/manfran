@@ -425,3 +425,39 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Stats + contacto reales (bloqueante — Franco/Manuel)
 - Video hero sin watermark (post-diseño)
 - Fase 2: automatizaciones backend
+
+---
+
+## 2026-06-11 — Sesión 11: Configuración DNS y conexión del dominio manfran.com (web en vivo)
+
+**Qué se hizo:**
+
+- **Diagnóstico del DNS** (el bloqueante venía "esperando a Manuel / Google Workspace"):
+  - `nslookup -type=NS manfran.com` → nameservers `ns-cloud-c{1..4}.googledomains.com` (Google Cloud DNS)
+  - Estado previo: `manfran.com` (A) apuntaba a IPs de Squarespace (198.185.159.x / 198.49.23.x) y `www` (CNAME) → `ext-sq.squarespace.com` → página de parking de Squarespace
+  - **Hallazgo clave:** el dominio se registró vía Google Domains, que en 2023 migró a **Squarespace**. El DNS NO se edita en `admin.google.com` (eso es solo Google Workspace), sino en el panel de **Squarespace Domains**.
+
+- **Edición de registros DNS en Squarespace:**
+  - Borrados: los 4 registros A del apex que apuntaban a Squarespace + el CNAME `www` → `ext-sq.squarespace.com`
+  - Agregados (Vercel):
+    - A `@` → `216.198.79.1`
+    - CNAME `www` → `417ddb1d3a6e551e.vercel-dns-017.com`
+  - **Intactos** (no se tocaron): registros MX (correo Google Workspace), TXT (SPF/DKIM/verificación Google), y CNAME `_domainconnect` → `_domainconnect.domains.squarespace.com` (Domain Connect, no enruta tráfico, inofensivo)
+  - TTL: 3600 / default
+
+- **Resultado:** dominio propagado y verificado en Vercel. La landing está **en vivo en https://manfran.com** con SSL automático.
+
+**Aprendizajes documentados:**
+- Dominios registrados vía Google Workspace / Google Domains hoy se gestionan en **Squarespace**, aunque conserven nameservers `ns-cloud-*.googledomains.com`. El panel de DNS es `account.squarespace.com/domains`, no `admin.google.com`.
+- El proyecto manfran en Vercel NO vive en la cuenta "Nazareno's projects" (esa solo tiene `gc.com` y `guido-command-center`) — está en la cuenta/equipo conectado al repo `ManFranSRL/manfran`.
+
+**Archivos modificados:**
+- Ninguno en código (cambios solo en DNS externo / Squarespace)
+- `docs/PLAN_ACTIVO.md` — DNS marcado como resuelto, entrada Sesión 11
+
+**Pendiente:**
+- Próxima sesión: diseño de posts de Instagram (feed + historias) con claude.ai/design — adjuntar `src/` + `public/assets/brand/` + `CLAUDE.md` como codebase
+- Mobile review fino de toda la landing
+- Regenerar `background_quoter.jpg` en 4K
+- Stats + contacto reales (bloqueante — Franco/Manuel)
+- Fase 2: automatizaciones backend
