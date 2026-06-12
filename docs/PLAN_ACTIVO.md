@@ -67,6 +67,12 @@
   - Agregados: A `@` → `216.198.79.1` | CNAME `www` → `417ddb1d3a6e551e.vercel-dns-017.com`
   - Intactos: MX (Google Workspace), TXT (SPF/DKIM/verificación), CNAME `_domainconnect`
 
+### ✅ Completado en Sesión 12 (2026-06-11) + Sesión 13 (2026-06-12)
+- [x] **Emails automáticos con Resend** — contacto + cotizador (servicio + mercadería)
+- [x] **FormSuccess.tsx** — reemplaza estado emoji en Contact y Quoter, con AnimatePresence
+- [x] **DS templates** en root: contacto.html, cotizacion-mercaderia.html, cotizacion-servicio.html, icons.html
+- [x] **Email assets corregidos**: wordmark sin fondo negro, iconos renombrados (package/globe/file)
+
 ---
 
 ## 🔄 Próximo — En orden de prioridad
@@ -101,7 +107,8 @@
 
 ## Fase 2 (automatizaciones)
 - [ ] Backend cotizador → Google Sheets
-- [ ] Formulario contacto → Resend email
+- [x] **Formulario contacto → Resend email** ✅ (Sesión 12)
+- [x] **Cotizador → Resend email** ✅ (Sesión 12)
 - [ ] Bot Telegram: /nueva_op, /estado, /cotizar
 - [ ] Webhook cotizador → Sheets → Telegram alert
 

@@ -461,3 +461,46 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Regenerar `background_quoter.jpg` en 4K
 - Stats + contacto reales (bloqueante — Franco/Manuel)
 - Fase 2: automatizaciones backend
+
+---
+
+## 2026-06-11 — Sesión 12: Emails automáticos con Resend + DS templates + assets corregidos
+
+**Qué se hizo:**
+
+- **Emails automáticos con Resend:**
+  - Integración de `resend` en `src/app/api/contact/route.ts` y `src/app/api/quoter/route.ts`
+  - Template HTML de email para auto-respuesta al cliente (`src/emails/cliente/contacto.html`) con variables `{{name}}`, `{{email}}`, `{{company}}`, `{{message}}`, `{{contactEmail}}`, `{{contactPhone}}`
+  - Fuentes alojadas en `public/assets/email/fonts/` (Avenir Next Condensed Bold + Helvetica x3) para fallback en clientes de email
+  - `FormSuccess.tsx` — nuevo componente UI con `AnimatePresence` + `motion` para reemplazar el estado emoji ✅ tanto en Contact como en Quoter. Props: `title`, `subtitle`, `onReset`
+
+- **DS templates en root del repo:**
+  - `contacto.html` — auto-respuesta contacto (DS preview con paths relativos + inline SVG icons)
+  - `cotizacion-mercaderia.html` — auto-respuesta cotizador (mercadería)
+  - `cotizacion-servicio.html` — auto-respuesta cotizador (servicio)
+  - `icons.html` — librería de iconos Lucide para emails (ship, plane, truck, package, globe, file, pin, clock)
+
+- **Assets de email corregidos (Sesión 13, 2026-06-12):**
+  - `wordmark.png` en `public/assets/email/` reemplazado por versión sin fondo negro (`manfran-wordmark-white-orbit-plane.png`)
+  - `box.png` renombrado a `package.png` en `public/assets/email/icons/` para alinear con nomenclatura de icons.html
+  - Referencias actualizadas en `src/emails/cliente/contacto.html`
+
+**Archivos modificados:**
+- `src/components/sections/Contact.tsx` — `FormSuccess` + `AnimatePresence` wrapper
+- `src/components/sections/Quoter.tsx` — `FormSuccess` + `AnimatePresence` en ServiceForm y CargoForm
+- `src/components/ui/FormSuccess.tsx` — nuevo
+- `src/emails/cliente/contacto.html` — template producción (icon: box.png → package.png)
+- `public/assets/email/wordmark.png` — reemplazado (sin fondo negro)
+- `public/assets/email/outline.png` — actualizado
+- `public/assets/email/icons/package.png` — nuevo (ex box.png)
+- `public/assets/email/icons/globe.png` — nuevo
+- `public/assets/email/icons/file.png` — nuevo
+- `contacto.html`, `cotizacion-mercaderia.html`, `cotizacion-servicio.html`, `icons.html` — nuevos (DS root)
+
+**Build status:** TypeScript sin errores. Commit `c945edc` pusheado a main.
+
+**Pendiente:**
+- Mobile review fino de toda la landing
+- Regenerar `background_quoter.jpg` en 4K
+- Stats + contacto reales (bloqueante — Franco/Manuel)
+- Video hero sin watermark
