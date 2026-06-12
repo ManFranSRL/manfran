@@ -41,15 +41,27 @@ type CargoFormData = z.infer<typeof cargoSchema>
 
 function ServiceForm() {
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ServiceFormData>({
     resolver: zodResolver(serviceSchema),
   })
 
   const onSubmit = async (data: ServiceFormData) => {
-    // Fase 2: enviar a webhook/Sheets — por ahora simula envío
-    await new Promise((r) => setTimeout(r, 800))
-    console.log('Service quote:', data)
-    setSent(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'servicio', ...data }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => null)
+        throw new Error(body?.error ?? 'No se pudo enviar la cotización.')
+      }
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo enviar la cotización. Intentá de nuevo.')
+    }
   }
 
   if (sent) {
@@ -138,6 +150,7 @@ function ServiceForm() {
       </div>
 
       <div className="sm:col-span-2">
+        {error && <p className="text-red-400 text-xs mb-2">{error}</p>}
         <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? 'Enviando...' : 'Solicitar cotización'}
         </Button>
@@ -148,14 +161,27 @@ function ServiceForm() {
 
 function CargoForm() {
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<CargoFormData>({
     resolver: zodResolver(cargoSchema),
   })
 
   const onSubmit = async (data: CargoFormData) => {
-    await new Promise((r) => setTimeout(r, 800))
-    console.log('Cargo quote:', data)
-    setSent(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'mercaderia', ...data }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => null)
+        throw new Error(body?.error ?? 'No se pudo enviar la cotización.')
+      }
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo enviar la cotización. Intentá de nuevo.')
+    }
   }
 
   if (sent) {
@@ -226,6 +252,7 @@ function CargoForm() {
       </div>
 
       <div className="sm:col-span-2">
+        {error && <p className="text-red-400 text-xs mb-2">{error}</p>}
         <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? 'Enviando...' : 'Solicitar cotización'}
         </Button>

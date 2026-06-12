@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<title>Nueva cotización de servicio · MANFRAN</title>
+<!-- ============================================================
+     INTERNO — Lead cotización SERVICIO
+     Destino: info@manfran.com + CEOs · Reply-To = email del cliente
+     ============================================================ -->
+<style>
+  body, table, td, p, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
+  img { -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; display:block; }
+  body { margin:0 !important; padding:0 !important; width:100% !important; background:#0a0a0a; }
+  .m-display { font-family:"Avenir Next Condensed","Helvetica Neue","Arial Black",Arial,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:-0.005em; line-height:0.98; color:#FFFFFF; }
+  .m-body    { font-family:"Helvetica","Helvetica Neue",Arial,sans-serif; color:#FFFFFF; }
+  .m-eyebrow { font-family:"Avenir Next Condensed","Helvetica Neue",Arial,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.18em; font-size:12px; color:#00A0D8; }
+  .m-label   { font-family:"Avenir Next Condensed","Helvetica Neue",Arial,sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; color:#8A8A8A; }
+  .m-value   { font-family:"Helvetica","Helvetica Neue",Arial,sans-serif; font-weight:400; font-size:15px; line-height:1.45; color:#FFFFFF; }
+  .m-mono    { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+  a { color:#00A0D8; text-decoration:none; }
+  @media only screen and (max-width:620px){ .m-px{ padding-left:24px !important; padding-right:24px !important; } .m-hero{ font-size:34px !important; } .m-stack{ display:block !important; width:100% !important; } .m-stack-pad{ padding-bottom:16px !important; } }
+</style>
+</head>
+<body style="background:#0a0a0a;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0a">
+  <tr><td align="center" style="padding:24px 12px;">
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#1A1A1A" style="max-width:600px;">
+
+      <tr><td bgcolor="#00A0D8" height="3" style="line-height:3px; font-size:0;">&nbsp;</td></tr>
+
+      <tr><td class="m-px" style="padding:24px 40px 0 40px;">
+        <p class="m-eyebrow" style="margin:0;">Lead · Cotización servicio &nbsp;·&nbsp; <span class="m-mono" style="color:#FFFFFF;">#{{ref}}</span></p>
+      </td></tr>
+
+      <tr><td class="m-px" style="padding:14px 40px 8px 40px;">
+        <h1 class="m-display m-hero" style="margin:0; font-size:40px;">{{origin}} → {{destination}}</h1>
+        <p class="m-body" style="margin:8px 0 0 0; font-size:14px; color:#B5B5B5;">
+          {{serviceType}} · {{transportMode}} — solicitada por {{name}}. Respondé este email para contestarle directo.
+        </p>
+      </td></tr>
+
+      <!-- contacto cliente -->
+      <tr><td class="m-px" style="padding:22px 40px 0 40px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#222222" style="border:1px solid rgba(255,255,255,0.10); border-radius:8px;">
+          <tr><td style="padding:18px 24px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Contacto</p>
+                  <p class="m-value" style="margin:0;">{{name}}</p>
+                </td>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Email</p>
+                  <p class="m-value" style="margin:0; word-break:break-all;"><a href="mailto:{{email}}" style="color:#00A0D8;">{{email}}</a></p>
+                </td>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
+              <tr><td>
+                <p class="m-label" style="margin:0 0 4px 0;">Teléfono</p>
+                <p class="m-value" style="margin:0;">{{phone}}</p>
+              </td></tr>
+            </table>
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <!-- datos operacion -->
+      <tr><td class="m-px" style="padding:22px 40px 0 40px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#222222" style="border:1px solid rgba(255,255,255,0.10); border-radius:8px;">
+          <tr><td style="padding:20px 24px;">
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Tipo de servicio</p>
+                  <p class="m-value" style="margin:0;">{{serviceType}}</p>
+                </td>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Modo de transporte</p>
+                  <p class="m-value" style="margin:0;">{{transportMode}}</p>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:16px 0;"><tr><td height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Tipo de carga</p>
+                  <p class="m-value" style="margin:0;">{{cargoType}}</p>
+                </td>
+                <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                  <p class="m-label" style="margin:0 0 4px 0;">Peso · Volumen</p>
+                  <p class="m-value m-mono" style="margin:0; font-size:14px;">{{weight}} · {{volume}}</p>
+                </td>
+              </tr>
+            </table>
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:16px 0;"><tr><td height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
+
+            <p class="m-label" style="margin:0 0 4px 0;">Descripción de la mercadería</p>
+            <p class="m-value" style="margin:0 0 16px 0; color:#D4D4D4;">{{cargoDescription}}</p>
+
+            <p class="m-label" style="margin:0 0 4px 0;">Comentarios adicionales</p>
+            <p class="m-value" style="margin:0; color:#D4D4D4;">{{notes}}</p>
+
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <tr><td height="36" style="line-height:36px; font-size:0;">&nbsp;</td></tr>
+
+      <tr><td bgcolor="#0F0F0F" class="m-px" style="background:#0F0F0F; padding:18px 40px;">
+        <p class="m-body" style="margin:0; font-size:11px; line-height:1.6; color:#5C5C5C;">
+          Lead generado automáticamente desde manfran.com · Referencia <span class="m-mono" style="color:#8A8A8A;">#{{ref}}</span> · «Responder» contesta directo a <a href="mailto:{{email}}" style="color:#8A8A8A;">{{email}}</a>.
+        </p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>

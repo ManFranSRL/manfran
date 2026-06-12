@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Cotización mercadería · Email automático" subtitle="Auto-response — formulario Cotizar Mercadería" -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<title>Recibimos tu cotización de mercadería · MANFRAN</title>
+<!-- ============================================================
+     SUBJECT:    Recibimos tu cotización de mercadería · MANFRAN
+     PREHEADER:  Estamos analizando tu mercadería · te respondemos en menos de 24 hs hábiles.
+     TEMPLATE:   cotización mercadería · auto-response
+     ============================================================ -->
+<style>
+  /* MANFRAN brand fonts — Avenir Next Condensed Bold (display) + Helvetica (body).
+     For production: replace url() with absolute CDN paths; many email clients
+     strip @font-face, so the system fallback chain still has to render acceptably. */
+  @font-face {
+    font-family: "Avenir Next Condensed";
+    src: url("https://manfran.com/assets/email/fonts/avenir-next-condensed-bold.ttf") format("truetype");
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "Helvetica";
+    src: url("https://manfran.com/assets/email/fonts/helvetica-light.ttf") format("truetype");
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "Helvetica";
+    src: url("https://manfran.com/assets/email/fonts/Helvetica.ttf") format("truetype");
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "Helvetica";
+    src: url("https://manfran.com/assets/email/fonts/Helvetica-Bold.ttf") format("truetype");
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+</style>
+<style>
+  body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
+  body { margin: 0 !important; padding: 0 !important; width: 100% !important; background: #0a0a0a; }
+
+  .m-outer  { background: #0a0a0a; }
+  .m-shell  { background: #1A1A1A; }
+  .m-card   { background: #222222; border: 1px solid rgba(255,255,255,0.10); border-radius: 8px; }
+  .m-rule   { background: rgba(255,255,255,0.10); height: 1px; line-height: 1px; font-size: 0; }
+
+  .m-display { font-family: "Avenir Next Condensed", "Helvetica Neue", "Arial Black", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.95; color: #FFFFFF; }
+  .m-body    { font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif; color: #FFFFFF; }
+  .m-eyebrow { font-family: "Avenir Next Condensed", "Helvetica Neue", Arial, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: #00A0D8; }
+  .m-label   { font-family: "Avenir Next Condensed", "Helvetica Neue", Arial, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: #8A8A8A; }
+  .m-value   { font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif; font-weight: 400; font-size: 15px; line-height: 1.45; color: #FFFFFF; }
+  .m-mono    { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+  a { color: #00A0D8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  @media only screen and (max-width: 620px) {
+    .m-shell  { width: 100% !important; }
+    .m-px     { padding-left: 24px !important; padding-right: 24px !important; }
+    .m-hero   { font-size: 44px !important; }
+    .m-stack  { display: block !important; width: 100% !important; }
+    .m-stack-pad { padding-bottom: 16px !important; }
+    .m-step-pad { padding-bottom: 14px !important; }
+  }
+</style>
+</head>
+<body class="m-outer">
+
+<div style="display:none; visibility:hidden; opacity:0; color:transparent; height:0; width:0; overflow:hidden; mso-hide:all;">
+  Estamos analizando tu mercadería · te respondemos en menos de 24 hs hábiles con una propuesta a medida.
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a0a0a" class="m-outer">
+  <tr>
+    <td align="center" style="padding: 24px 12px;">
+
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#1A1A1A" class="m-shell" style="max-width:600px;">
+
+        <!-- Top accent rule -->
+        <tr><td bgcolor="#00A0D8" height="3" style="line-height:3px; font-size:0;">&nbsp;</td></tr>
+
+        <!-- ============ HEADER ============ -->
+        <tr>
+          <td class="m-px" style="padding: 28px 40px 24px 40px;">
+            <img src="https://manfran.com/assets/email/wordmark.png" alt="MANFRAN" width="180" height="auto" style="display:block; width:180px; max-width:180px; height:auto;">
+          </td>
+        </tr>
+
+        <!-- ============ HERO ============ -->
+        <tr>
+          <td class="m-px" style="padding: 24px 40px 8px 40px;">
+            <p class="m-eyebrow" style="margin:0 0 18px 0;">
+              Cotización de mercadería
+              &nbsp;·&nbsp;
+              <span class="m-mono" style="color:#FFFFFF; letter-spacing:0.04em;">REF #{{ref}}</span>
+            </p>
+            <h1 class="m-display m-hero" style="margin:0 0 16px 0; font-size:54px;">
+              Tu mercadería<br>
+              <span style="color: #00A0D8; padding: 0px; margin: 0px">está en análisis.</span>
+            </h1>
+            <p class="m-body" style="margin: 0; font-size: 15px; line-height: 1.5; color: #D4D4D4; font-weight: 400">
+              Recibimos los datos de tu carga. Te enviamos la cotización con condiciones y modo de transporte recomendado dentro de las <strong style="color: #FFFFFF; font-family: Helvetica; font-weight: 700">24 hs hábiles</strong>.
+            </p>
+          </td>
+        </tr>
+
+        <!-- ============ GREETING ============ -->
+        <tr>
+          <td class="m-px" style="padding: 0 40px 8px 40px;">
+            <p class="m-body" style="margin: 0 0 12px 0; font-size: 16px; line-height: 1.55; padding: 20px 0px 0px">
+              Hola <strong>{{firstName}}</strong>,
+            </p>
+            <p class="m-body" style="margin:0; font-size:15px; line-height:1.65; color:#D4D4D4;">
+              Recibimos los datos de tu mercadería. Nuestro equipo está evaluando la posición arancelaria, el incoterm declarado y las opciones de transporte más eficientes para tu operación.
+            </p>
+          </td>
+        </tr>
+
+        <!-- ============ SUMMARY CARD ============ -->
+        <tr>
+          <td class="m-px" style="padding: 28px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="m-card" bgcolor="#222222" style="border:1px solid rgba(255,255,255,0.10); border-radius:8px;">
+              <tr>
+                <td style="padding: 22px 24px 8px 24px;">
+                  <p class="m-eyebrow" style="margin: 0; color: #FFFFFF; font-size: 14px">Resumen de la mercadería</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 0 24px 24px 24px;">
+
+                  <!-- Origen + Destino -->
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:18px;">
+                    <tr>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Origen</p>
+                        <p class="m-value" style="margin:0;">{{origin}}</p>
+                      </td>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Destino</p>
+                        <p class="m-value" style="margin:0;">{{destination}}</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:18px 0;"><tr><td class="m-rule" height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
+
+                  <!-- Descripción de la mercadería -->
+                  <p class="m-label" style="margin:0 0 4px 0;">Descripción de la mercadería</p>
+                  <p class="m-value" style="margin:0;">{{cargoDescription}}</p>
+
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:18px 0;"><tr><td class="m-rule" height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
+
+                  <!-- Peso + Volumen -->
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Peso</p>
+                        <p class="m-value m-mono" style="margin: 0; letter-spacing: 0.02em; font-family: Helvetica; font-weight: 100; font-size: 14px">{{weight}}</p>
+                      </td>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Volumen</p>
+                        <p class="m-value m-mono" style="margin: 0; letter-spacing: 0.02em; font-family: Helvetica; font-weight: 100; font-size: 14px">{{volume}}</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:18px 0;"><tr><td class="m-rule" height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
+
+                  <!-- Posición arancelaria + Incoterm -->
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Posición arancelaria (NCM)</p>
+                        <p class="m-value m-mono" style="margin: 0; font-family: Helvetica; font-weight: 100; font-size: 14px">{{hsCode}}</p>
+                      </td>
+                      <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
+                        <p class="m-label" style="margin:0 0 4px 0;">Incoterm</p>
+                        <p class="m-value" style="margin:0;">{{incoterm}}</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ============ PRÓXIMOS PASOS ============ -->
+        <tr>
+          <td class="m-px" style="padding: 36px 40px 0 40px;">
+            <p class="m-eyebrow" style="margin:0 0 14px 0;">Próximos pasos</p>
+            <h2 class="m-display" style="margin:0 0 20px 0; font-size:32px;">¿Qué pasa ahora?</h2>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="m-px" style="padding: 4px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+              <tr><td class="m-step-pad" style="padding: 8px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="top" width="44" style="padding-right:14px;">
+                      <span class="m-display" style="font-size:36px; color:#00A0D8; line-height:1;">01</span>
+                    </td>
+                    <td valign="top">
+                      <p class="m-display" style="margin:0 0 4px 0; font-size:18px; color:#FFFFFF;">Validación arancelaria</p>
+                      <p class="m-body" style="margin:0; font-size:14px; line-height:1.55; color:#B5B5B5;">Verificamos la NCM declarada, derechos y restricciones aplicables para la operación. <span style="color:#FFFFFF;">Plazo: &lt; 4 hs hábiles.</span></p>
+                    </td>
+                  </tr>
+                </table>
+              </td></tr>
+
+              <tr><td height="14" style="line-height:14px; font-size:0;">&nbsp;</td></tr>
+
+              <tr><td class="m-step-pad" style="padding: 8px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="top" width="44" style="padding-right:14px;">
+                      <span class="m-display" style="font-size:36px; color:#00A0D8; line-height:1;">02</span>
+                    </td>
+                    <td valign="top">
+                      <p class="m-display" style="margin:0 0 4px 0; font-size:18px; color:#FFFFFF;">Cotización detallada</p>
+                      <p class="m-body" style="margin:0; font-size:14px; line-height:1.55; color:#B5B5B5;">Te enviamos flete, gastos en origen y destino, despacho y opciones de transporte recomendadas. <span style="color:#FFFFFF;">Plazo: &lt; 24 hs hábiles.</span></p>
+                    </td>
+                  </tr>
+                </table>
+              </td></tr>
+
+              <tr><td height="14" style="line-height:14px; font-size:0;">&nbsp;</td></tr>
+
+              <tr><td class="m-step-pad" style="padding: 8px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="top" width="44" style="padding-right:14px;">
+                      <span class="m-display" style="font-size:36px; color:#00A0D8; line-height:1;">03</span>
+                    </td>
+                    <td valign="top">
+                      <p class="m-display" style="margin:0 0 4px 0; font-size:18px; color:#FFFFFF;">Operación end-to-end</p>
+                      <p class="m-body" style="margin:0; font-size:14px; line-height:1.55; color:#B5B5B5;">Aprobada la propuesta, coordinamos booking, documentación y seguimiento hasta la entrega final.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td></tr>
+
+            </table>
+          </td>
+        </tr>
+
+        <!-- ============ CONTACT CALLOUT ============ -->
+        <tr>
+          <td class="m-px" style="padding: 36px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0F0F0F" style="border:1px solid rgba(0,160,216,0.30); border-radius:8px;">
+              <tr>
+                <td style="padding: 20px 22px;">
+                  <p class="m-eyebrow" style="margin:0 0 6px 0;">¿Es urgente?</p>
+                  <p class="m-body" style="margin:0; font-size:14px; line-height:1.55; color:#D4D4D4;">
+                    Si necesitás contactarnos antes, escribinos a <a href="mailto:{{contactEmail}}" style="color:#00A0D8; font-weight:bold;">{{contactEmail}}</a> o llamanos al <a href="tel:+541100000000" style="color:#00A0D8; font-weight:bold;">{{contactPhone}}</a> mencionando la referencia <span class="m-mono" style="color:#FFFFFF;">#{{ref}}</span>.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td height="44" style="line-height:44px; font-size:0;">&nbsp;</td></tr>
+
+        <!-- ============ FOOTER ============ -->
+        <tr>
+          <td bgcolor="#0F0F0F" class="m-px" style="background: #0F0F0F; padding: 0px 40px 32px; height: 305px">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="middle" class="m-stack m-stack-pad" width="50%" style="padding-right:16px;">
+                  <img src="https://manfran.com/assets/email/outline.png" alt="MANFRAN" width="200" height="auto" style="display: block; width: 200px; max-width: 200px; height: auto; padding: 0px 0px 0px 20px">
+                </td>
+                <td valign="middle" class="m-stack m-stack-pad" width="50%" style="padding-left: 16px; padding: 0px 0px 0px 30px">
+                  <p class="m-label" style="margin:0 0 6px 0; color:#5C5C5C;">Contacto</p>
+                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6;"><a href="mailto:{{contactEmail}}" style="color:#FFFFFF;">{{contactEmail}}</a></p>
+                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6; color:#D4D4D4;">{{contactPhone}}</p>
+                  <p class="m-body" style="margin:0; font-size:13px; line-height:1.6; color:#8A8A8A;">Lunes a viernes · 9 — 18 h</p>
+                </td>
+              </tr>
+
+              <tr><td colspan="2" height="6" style="line-height:6px; font-size:0;">&nbsp;</td></tr>
+              <tr><td colspan="2" class="m-rule" height="1" style="background:rgba(255,255,255,0.10); line-height:1px; font-size:0;">&nbsp;</td></tr>
+              <tr><td colspan="2" height="14" style="line-height:14px; font-size:0;">&nbsp;</td></tr>
+
+              <tr>
+                <td colspan="2">
+                  <p class="m-body" style="margin:0; font-size:11px; line-height:1.6; color:#5C5C5C;">
+                    Este es un mensaje automático generado al recibir tu solicitud. Por favor no respondas a este correo — para cualquier consulta sobre tu cotización, escribinos a <a href="mailto:{{contactEmail}}" style="color:#8A8A8A;">{{contactEmail}}</a> citando la referencia <span class="m-mono" style="color:#8A8A8A;">#{{ref}}</span>.
+                  </p>
+                  <p class="m-body" style="margin:14px 0 0 0; font-size:11px; line-height:1.6; color:#5C5C5C;">
+                    © 2026 MANFRAN · Forwarding internacional · Aéreo · Marítimo · Terrestre
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td height="24" style="line-height:24px; font-size:0;">&nbsp;</td></tr></table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

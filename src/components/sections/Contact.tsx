@@ -19,14 +19,27 @@ type FormData = z.infer<typeof schema>
 
 export function Contact() {
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((r) => setTimeout(r, 800))
-    console.log('Contact:', data)
-    setSent(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => null)
+        throw new Error(body?.error ?? 'No se pudo enviar el mensaje.')
+      }
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo enviar el mensaje. Intentá de nuevo.')
+    }
   }
 
   return (
@@ -99,6 +112,7 @@ export function Contact() {
                 <textarea {...register('message')} rows={4} placeholder="¿En qué te podemos ayudar? *" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-manfran-blue resize-none" />
                 {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
               </div>
+              {error && <p className="text-red-400 text-sm">{error}</p>}
               <Button type="submit" size="lg" disabled={isSubmitting}>
                 {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
               </Button>

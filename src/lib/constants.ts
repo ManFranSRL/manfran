@@ -5,7 +5,7 @@ export const SITE = {
     'Agente de carga y despachante de aduana en Argentina. Importación, exportación y logística internacional.',
   url: 'https://www.manfran.com',
   email: 'info@manfran.com',
-  phone: '+54 11 XXXX-XXXX',
+  phone: '+54 11 5141 2350',
   address: 'Buenos Aires, Argentina',
 }
 
