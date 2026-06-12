@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Social" name="Cotizador · 9:16 reel" subtitle="540×960 — screenshot a 2x para 1080×1920 Instagram" viewport="540x960" -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cotizador MANFRAN — 9:16</title>
+<style>
+
+/* ─── RESET ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── FONTS ──────────────────────────────────────── */
+@font-face {
+  font-family: "Avenir";
+  src: url("assets/fonts/avenir-next-condensed-bold.ttf") format("truetype");
+  font-weight: 700; font-display: block;
+}
+@font-face {
+  font-family: "Helv";
+  src: url("assets/fonts/helvetica-light.ttf") format("truetype");
+  font-weight: 300; font-display: block;
+}
+@font-face {
+  font-family: "Helv";
+  src: url("assets/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 400; font-display: block;
+}
+
+/* ─── TOKENS ─────────────────────────────────────── */
+:root {
+  --blue:        #00A0D8;
+  --blue-dark:   #0088B8;
+  --black:       #1A1A1A;
+  --white:       #FFFFFF;
+  --display:     "Avenir", "Arial Black", Arial, sans-serif;
+  --body:        "Helv", "Helvetica Neue", Arial, sans-serif;
+  --glass-bg:    rgba(255,255,255,0.06);
+  --glass-b:     rgba(255,255,255,0.10);
+  --input-bg:    rgba(0,0,0,0.45);
+  --input-b:     rgba(255,255,255,0.12);
+  --text-muted:  rgba(255,255,255,0.50);
+  --text-ph:     rgba(255,255,255,0.28);
+}
+
+/* ─── CANVAS ─────────────────────────────────────── */
+html {
+  width:  540px;
+  height: 960px;
+}
+body {
+  width:  540px;
+  height: 960px;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--body);
+  color: var(--white);
+  background: #0a0a0a;
+}
+
+/* ─── BG IMAGE + OVERLAYS ────────────────────────── */
+.bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("public/assets/background_quoter.jpg");
+  background-size: cover;
+  background-position: center 30%;
+}
+.bg-ov1 {
+  position: absolute; inset: 0;
+  background: rgba(10, 14, 20, 0.72);
+}
+.bg-ov2 {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8,8,8,0.90) 0%,
+    rgba(8,8,8,0.20) 28%,
+    rgba(8,8,8,0.10) 55%,
+    rgba(8,8,8,0.70) 85%,
+    rgba(8,8,8,0.95) 100%
+  );
+}
+
+/* ─── CONTENT LAYER ──────────────────────────────── */
+.content {
+  position: relative; z-index: 2;
+  height: 960px;
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* WORDMARK */
+.wordmark {
+  display: block;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 20px;
+}
+
+/* HEADER */
+.eyebrow {
+  font-family: var(--display);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.title {
+  font-family: var(--display);
+  font-size: 38px; font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.97;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-family: var(--body);
+  font-size: 13px; font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* ─── GLASS CARD ─────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-b);
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blue top stripe */
+.stripe { height: 3px; background: var(--blue); flex-shrink: 0; }
+
+/* TABS */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+.tab {
+  flex: 1;
+  padding: 12px 0;
+  font-family: var(--display);
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.35);
+  cursor: default;
+}
+.tab.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+  background: rgba(0,160,216,0.05);
+}
+
+/* FORM BODY */
+.form-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.field { display: flex; flex-direction: column; gap: 4px; }
+
+label {
+  font-family: var(--display);
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.75);
+}
+
+input, select, textarea {
+  font-family: var(--body);
+  font-size: 13px; font-weight: 400;
+  color: var(--white);
+  background: var(--input-bg);
+  border: 1px solid var(--input-b);
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+  width: 100%;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-ph);
+}
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300A0D8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 36px;
+  cursor: default;
+}
+
+textarea { resize: none; }
+
+/* ─── BUTTON ─────────────────────────────────────── */
+.btn {
+  display: block; width: 100%;
+  padding: 13px;
+  font-family: var(--display);
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--white);
+  background: var(--blue);
+  border: none; border-radius: 8px;
+  text-align: center;
+  margin-top: 2px;
+  cursor: default;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div class="bg">
+  <div class="bg-ov1"></div>
+  <div class="bg-ov2"></div>
+</div>
+
+<div class="content">
+
+  <!-- Wordmark -->
+  <img class="wordmark" src="public/assets/email/wordmark.png" alt="MANFRAN">
+
+  <!-- Header -->
+  <p class="eyebrow">Cotizador online</p>
+  <h1 class="title">¿Cuánto cuesta<br>tu operación?</h1>
+  <p class="subtitle">Completá el formulario y te respondemos<br>en menos de 24 hs hábiles.</p>
+
+  <!-- Glass card -->
+  <div class="glass">
+    <div class="stripe"></div>
+
+    <div class="tabs">
+      <button class="tab active">Cotizar servicio</button>
+      <button class="tab">Cotizar mercadería</button>
+    </div>
+
+    <div class="form-body">
+
+      <div class="field">
+        <label>Tipo de servicio *</label>
+        <select>
+          <option selected>Importación</option>
+          <option>Exportación</option>
+          <option>Despacho aduanero</option>
+          <option>Logística integral</option>
+        </select>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Origen *</label>
+          <input type="text" value="Shanghai, China">
+        </div>
+        <div class="field">
+          <label>Destino *</label>
+          <input type="text" value="Buenos Aires">
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Transporte *</label>
+          <select>
+            <option>Aéreo</option>
+            <option selected>Marítimo</option>
+            <option>Terrestre</option>
+            <option>Multimodal</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tipo de carga *</label>
+          <select>
+            <option selected>Carga general</option>
+            <option>Refrigerada</option>
+            <option>Peligrosa (IMO)</option>
+            <option>Alto valor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Peso aprox. (kg) *</label>
+          <input type="text" value="2.800">
+        </div>
+        <div class="field">
+          <label>Volumen (m³)</label>
+          <input type="text" value="18">
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Tu nombre *</label>
+          <input type="text" value="María García">
+        </div>
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" value="mgarcia@tech-ba.com">
+        </div>
+      </div>
+
+      <div class="btn">Solicitar cotización</div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
