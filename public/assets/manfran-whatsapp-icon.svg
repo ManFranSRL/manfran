@@ -21,8 +21,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.30615234"
-     inkscape:cx="-414.82616"
-     inkscape:cy="259.67464"
+     inkscape:cx="-107.78948"
+     inkscape:cy="47.362042"
      inkscape:window-width="1600"
      inkscape:window-height="829"
      inkscape:window-x="-8"
@@ -45,16 +45,19 @@
     </clipPath>
     <filter
        id="softShadow"
-       x="0"
-       y="0"
-       width="1"
-       height="1">
+       x="-0.0023955637"
+       y="-0.0023955637"
+       width="1.0047911"
+       height="1.0047911">
       <feDropShadow
          dx="0"
          dy="8"
          stdDeviation="12"
          flood-color="#1A1A1A"
          flood-opacity="0.18" />
+      <feGaussianBlur
+         stdDeviation="0.47911274"
+         id="feGaussianBlur1" />
     </filter>
   </defs>
   <!-- Transparent canvas. Main MANFRAN brand circle -->
@@ -79,7 +82,8 @@
   <!-- WhatsApp handset mark -->
   <g
      id="g4"
-     transform="matrix(0.9340288,0,0,0.9340288,-2.794333,38.161644)">
+     transform="matrix(0.80208641,0,0,0.80208641,33.763368,68.933836)"
+     style="mix-blend-mode:normal">
     <path
        d="m 278.99208,89.713712 c -79.99982,0 -144.99422,63.424058 -144.99422,141.679058 0,25.73604 7.15375,50.94863 20.67607,72.84607 l -24.51466,72.49711 75.63777,-23.64226 c 21.98469,12.91164 47.11004,19.71642 73.19504,19.71642 79.99981,0 144.99421,-63.42406 144.99421,-141.67906 0,-78.255 -64.9944,-141.417338 -144.99421,-141.417338 z"
        fill="none"
