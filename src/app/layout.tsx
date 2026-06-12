@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { SITE } from '@/lib/constants'
 import { SmoothScroll } from '@/components/layout/SmoothScroll'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 
 const avenirNextCondensedBold = localFont({
   src: '../../assets/fonts/avenir-next-condensed-bold.ttf',
@@ -55,6 +56,7 @@ export default function RootLayout({
     <html lang="es" className={`${avenirNextCondensedBold.variable} ${helvetica.variable}`}>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
+        <WhatsAppButton />
       </body>
     </html>
   )
