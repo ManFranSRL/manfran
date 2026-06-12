@@ -72,6 +72,13 @@
 - [x] **FormSuccess.tsx** — reemplaza estado emoji en Contact y Quoter, con AnimatePresence
 - [x] **DS templates** en root: contacto.html, cotizacion-mercaderia.html, cotizacion-servicio.html, icons.html
 - [x] **Email assets corregidos**: wordmark sin fondo negro, iconos renombrados (package/globe/file)
+- [x] **WhatsAppButton.tsx** — sticky bottom-right, glow azul, link a WhatsApp MANFRAN
+- [x] **FormSuccess check icon** — reemplazado por `manfran-check-icon.svg` (azul MANFRAN, drop-shadow)
+
+### ✅ Completado en Sesión 14 (2026-06-12)
+- [x] **`cotizador-9x16.html`** — canvas 1080×1920, fondo ASCII, tabs JS funcionales (servicio + mercadería), panel mercadería completo con datos reales (Guangzhou, NCM, FOB)
+- [x] **`contacto-9x16.html`** — canvas 1080×1920, restructurado con glass card análoga al cotizador, chips horizontales de contacto, textarea consulta visible
+- [x] **Screenshots 1080×1920px**: `cotizador-servicio`, `cotizador-mercaderia`, `contacto` — listos para animar en Luma
 
 ---
 

@@ -504,3 +504,43 @@ Se inicializó el proyecto `manfran-web` con Next.js 16.2.6, React 19, Tailwind 
 - Regenerar `background_quoter.jpg` en 4K
 - Stats + contacto reales (bloqueante — Franco/Manuel)
 - Video hero sin watermark
+
+
+---
+
+## 2026-06-12 — Sesión 14: Assets 9:16 para Instagram — cotizador + contacto
+
+**Qué se hizo:**
+
+- **`cotizador-9x16.html` — rediseño completo para captura Instagram Reel:**
+  - Canvas escalado de 540×960 → **1080×1920 px** (tamaño nativo Instagram Reel, sin necesidad de 2×)
+  - Fondo reemplazado: `background_quoter.jpg` → `public/assets/ascii/background_quoter_mobile_ascii.png` (768×1376 RGBA)
+  - Todas las métricas de espaciado y tipografía dobladas proporcionalmente (padding 56px, fuentes 22–76px, inputs 26px, border-radius 32px, stripe 6px)
+  - **Tabs funcionales con JavaScript**: click en "Cotizar servicio" / "Cotizar mercadería" alterna entre paneles con clase `.active` — permite tomar 2 screenshots distintos del mismo archivo
+  - Panel mercadería agregado completo: Origen (Guangzhou) / Destino (Puerto Buenos Aires), descripción de mercadería (maquinaria CNC), NCM 8457.10.00, Incoterm FOB, 4.200 kg, 22,5 m³, Juan Peralta
+
+- **`contacto-9x16.html` — reestructurado para ser análogo al cotizador:**
+  - Canvas escalado a 1080×1920 px
+  - Layout reestructurado: header compacto (wordmark + eyebrow + título + subtítulo) → chips de contacto horizontales (email + teléfono) → **glass card** con stripe azul ocupando el ~65% inferior
+  - Glass card idéntica al cotizador: `rgba(255,255,255,0.06)` + `backdrop-blur(28px)` + `border-radius: 32px`
+  - Formulario completo visible dentro del glass: Nombre/Email (row2) + Empresa + Consulta (textarea `flex:1`) + botón "Enviar mensaje"
+  - Chips horizontales de contacto con icono SVG + fondo `rgba(0,160,216,0.07)` + borde azul tenue
+
+- **Capturas 1080×1920 px tomadas via Chrome DevTools MCP:**
+  - `cotizador-servicio-1080x1920.png` — tab "Cotizar servicio" activa
+  - `cotizador-mercaderia-1080x1920.png` — tab "Cotizar mercadería" activa
+  - `contacto-1080x1920.png` — formulario completo visible
+
+**Archivos modificados:**
+- `cotizador-9x16.html` — canvas doblado, background ASCII, tabs JS, panel mercadería
+- `contacto-9x16.html` — canvas doblado, glass card, chips horizontales, layout análogo al cotizador
+- `cotizador-servicio-1080x1920.png` — nuevo (screenshot)
+- `cotizador-mercaderia-1080x1920.png` — nuevo (screenshot)
+- `contacto-1080x1920.png` — nuevo (screenshot)
+
+**Pendiente:**
+- Animar los screenshots con **Luma** (free tier) para generar .mp4 para Instagram Reel
+- Mobile review fino de toda la landing
+- Regenerar `background_quoter.jpg` en 4K
+- Stats + contacto reales (bloqueante — Franco/Manuel)
+- Video hero sin watermark
