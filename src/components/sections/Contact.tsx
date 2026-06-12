@@ -1,11 +1,12 @@
 ﻿'use client'
 
 import { useState } from 'react'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/ui/Button'
+import { FormSuccess } from '@/components/ui/FormSuccess'
 import { SITE } from '@/lib/constants'
 
 const schema = z.object({
@@ -20,7 +21,7 @@ type FormData = z.infer<typeof schema>
 export function Contact() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
 
@@ -89,14 +90,24 @@ export function Contact() {
           transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="min-w-0"
         >
+          <AnimatePresence mode="wait">
           {sent ? (
-            <div className="text-center py-16">
-              <span className="text-5xl">✅</span>
-              <p className="text-white font-display text-2xl font-bold uppercase mt-6">¡Mensaje enviado!</p>
-              <p className="text-white/50 mt-2">Nos ponemos en contacto pronto.</p>
-            </div>
+            <FormSuccess
+              key="success"
+              title="¡Mensaje enviado!"
+              subtitle="Nos ponemos en contacto pronto."
+              onReset={() => { setSent(false); reset() }}
+            />
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+            <motion.form
+              key="form"
+              onSubmit={handleSubmit(onSubmit)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-4"
+            >
               <div>
                 <input {...register('name')} placeholder="Nombre y apellido *" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-manfran-blue" />
                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
@@ -116,8 +127,9 @@ export function Contact() {
               <Button type="submit" size="lg" disabled={isSubmitting}>
                 {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
               </Button>
-            </form>
+            </motion.form>
           )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

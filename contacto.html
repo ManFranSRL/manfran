@@ -17,22 +17,22 @@
      strip @font-face, so the system fallback chain still has to render acceptably. */
   @font-face {
     font-family: "Avenir Next Condensed";
-    src: url("https://manfran.com/assets/email/fonts/avenir-next-condensed-bold.ttf") format("truetype");
+    src: url("../fonts/avenir-next-condensed-bold.ttf") format("truetype");
     font-weight: 700; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: "Helvetica";
-    src: url("https://manfran.com/assets/email/fonts/helvetica-light.ttf") format("truetype");
+    src: url("../fonts/helvetica-light.ttf") format("truetype");
     font-weight: 300; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: "Helvetica";
-    src: url("https://manfran.com/assets/email/fonts/Helvetica.ttf") format("truetype");
+    src: url("../fonts/Helvetica.ttf") format("truetype");
     font-weight: 400; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: "Helvetica";
-    src: url("https://manfran.com/assets/email/fonts/Helvetica-Bold.ttf") format("truetype");
+    src: url("../fonts/Helvetica-Bold.ttf") format("truetype");
     font-weight: 700; font-style: normal; font-display: swap;
   }
 </style>
@@ -85,7 +85,7 @@
         <!-- ============ HEADER ============ -->
         <tr>
           <td class="m-px" style="padding: 28px 40px 24px 40px;">
-            <img src="https://manfran.com/assets/email/wordmark.png" alt="MANFRAN" width="180" height="auto" style="display:block; width:180px; max-width:180px; height:auto;">
+            <img src="../assets/logos/manfran-wordmark-white-orbit-plane.png" alt="MANFRAN" width="180" height="auto" style="display:block; width:180px; max-width:180px; height:auto;">
           </td>
         </tr>
 
@@ -107,7 +107,7 @@
         <tr>
           <td class="m-px" style="padding: 0 40px 8px 40px;">
             <p class="m-body" style="margin:0 0 12px 0; font-size:16px; line-height:1.55;">
-              Hola <strong>{{firstName}}</strong>,
+              Hola <strong>Andrea</strong>,
             </p>
             <p class="m-body" style="margin:0; font-size:15px; line-height:1.65; color:#D4D4D4;">
               Recibimos tu consulta y un ejecutivo comercial está revisando los detalles. En las próximas horas hábiles te vamos a contactar para entender mejor tu operación y enviarte una propuesta concreta.
@@ -132,11 +132,11 @@
                     <tr>
                       <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-right:12px;">
                         <p class="m-label" style="margin:0 0 4px 0;">Nombre</p>
-                        <p class="m-value" style="margin:0;">{{name}}</p>
+                        <p class="m-value" style="margin:0;">Andrea Lemos</p>
                       </td>
                       <td width="50%" valign="top" class="m-stack m-stack-pad" style="padding-left:12px;">
                         <p class="m-label" style="margin:0 0 4px 0;">Email</p>
-                        <p class="m-value" style="margin:0; word-break:break-all;"><a href="mailto:{{email}}" style="color:#00A0D8;">{{email}}</a></p>
+                        <p class="m-value" style="margin:0; word-break:break-all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="16777872647377387a737b796556737c737b667a793875797b">[email&#160;protected]</a></p>
                       </td>
                     </tr>
                   </table>
@@ -145,7 +145,7 @@
 
                   <!-- Empresa -->
                   <p class="m-label" style="margin:0 0 4px 0;">Empresa</p>
-                  <p class="m-value" style="margin:0 0 18px 0;">{{company}}</p>
+                  <p class="m-value" style="margin:0 0 18px 0;">Lemos Importaciones SRL</p>
 
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px 0;"><tr><td class="m-rule" height="1" style="background:rgba(255,255,255,0.08); line-height:1px; font-size:0;">&nbsp;</td></tr></table>
 
@@ -156,7 +156,7 @@
                       <td width="3" bgcolor="#00A0D8" style="background:#00A0D8; width:3px; line-height:1px; font-size:0;">&nbsp;</td>
                       <td style="padding: 4px 0 4px 16px;">
                         <p class="m-value" style="margin:0; color:#D4D4D4; font-style:italic; line-height:1.6;">
-                          {{message}}
+                          Hola, estamos evaluando importar componentes electrónicos desde Asia de forma regular (4 a 6 contenedores al año). Quisiéramos coordinar una llamada para entender mejor sus servicios y tarifas. Gracias.
                         </p>
                       </td>
                     </tr>
@@ -189,7 +189,7 @@
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td valign="middle" width="36" style="padding-right:10px;">
-                      <img src="https://manfran.com/assets/email/icons/package.png" width="24" height="24" alt="" style="display:block; border:0;" />
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#00A0D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m7.5 4.27 9 5.15"/></svg>
                     </td>
                     <td valign="middle">
                       <a href="https://manfran.com/servicios" style="color:#FFFFFF; text-decoration:none;">
@@ -208,7 +208,7 @@
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td valign="middle" width="36" style="padding-right:10px;">
-                      <img src="https://manfran.com/assets/email/icons/globe.png" width="24" height="24" alt="" style="display:block; border:0;" />
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#00A0D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     </td>
                     <td valign="middle">
                       <a href="https://manfran.com/cobertura" style="color:#FFFFFF; text-decoration:none;">
@@ -227,7 +227,7 @@
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td valign="middle" width="36" style="padding-right:10px;">
-                      <img src="https://manfran.com/assets/email/icons/file.png" width="24" height="24" alt="" style="display:block; border:0;" />
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#00A0D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
                     </td>
                     <td valign="middle">
                       <a href="https://manfran.com/cotizar" style="color:#FFFFFF; text-decoration:none;">
@@ -251,7 +251,7 @@
                 <td style="padding: 20px 22px;">
                   <p class="m-eyebrow" style="margin:0 0 6px 0;">¿Necesitás contactarnos antes?</p>
                   <p class="m-body" style="margin:0; font-size:14px; line-height:1.55; color:#D4D4D4;">
-                    Escribinos directamente a <a href="mailto:{{contactEmail}}" style="color:#00A0D8; font-weight:bold;">{{contactEmail}}</a> o llamanos al <a href="tel:+541100000000" style="color:#00A0D8; font-weight:bold;">{{contactPhone}}</a> de lunes a viernes de 9 a 18 h.
+                    Escribinos directamente a <a href="/cdn-cgi/l/email-protection#ef86818980af828e81899d8e81c18c8082" style="color:#00A0D8; font-weight:bold;"><span class="__cf_email__" data-cfemail="f49d9a929bb499959a9286959ada979b99">[email&#160;protected]</span></a> o llamanos al <a href="tel:+541100000000" style="color:#00A0D8; font-weight:bold;">+54 11 XXXX-XXXX</a> de lunes a viernes de 9 a 18 h.
                   </p>
                 </td>
               </tr>
@@ -267,12 +267,12 @@
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td valign="middle" class="m-stack m-stack-pad" width="50%" style="padding-right:16px;">
-                  <img src="https://manfran.com/assets/email/outline.png" alt="MANFRAN" width="200" height="auto" style="display: block; width: 200px; max-width: 200px; height: auto; padding: 0px 0px 0px 20px">
+                  <img src="../assets/logos/manfran-outline.png" alt="MANFRAN" width="200" height="auto" style="display: block; width: 200px; max-width: 200px; height: auto; padding: 0px 0px 0px 20px">
                 </td>
                 <td valign="middle" class="m-stack m-stack-pad" width="50%" style="padding-left: 16px; padding: 0px 0px 0px 30px">
                   <p class="m-label" style="margin:0 0 6px 0; color:#5C5C5C;">Contacto</p>
-                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6;"><a href="mailto:{{contactEmail}}" style="color:#FFFFFF;">{{contactEmail}}</a></p>
-                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6; color:#D4D4D4;">{{contactPhone}}</p>
+                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6;"><a href="/cdn-cgi/l/email-protection#f1989f979eb19c909f9783909fdf929e9c" style="color:#FFFFFF;"><span class="__cf_email__" data-cfemail="0e676068614e636f60687c6f60206d6163">[email&#160;protected]</span></a></p>
+                  <p class="m-body" style="margin:0 0 4px 0; font-size:13px; line-height:1.6; color:#D4D4D4;">+54 11 XXXX-XXXX</p>
                   <p class="m-body" style="margin:0; font-size:13px; line-height:1.6; color:#8A8A8A;">Lunes a viernes · 9 — 18 h</p>
                 </td>
               </tr>
@@ -284,7 +284,7 @@
               <tr>
                 <td colspan="2">
                   <p class="m-body" style="margin:0; font-size:11px; line-height:1.6; color:#5C5C5C;">
-                    Este es un mensaje automático generado al recibir tu consulta. Para cualquier comunicación, escribinos a <a href="mailto:{{contactEmail}}" style="color:#8A8A8A;">{{contactEmail}}</a> — un ejecutivo comercial te contactará en las próximas horas hábiles.
+                    Este es un mensaje automático generado al recibir tu consulta. Para cualquier comunicación, escribinos a <a href="/cdn-cgi/l/email-protection#7811161e17381519161e0a1916561b1715" style="color:#8A8A8A;"><span class="__cf_email__" data-cfemail="e28b8c848da28f838c8490838ccc818d8f">[email&#160;protected]</span></a> — un ejecutivo comercial te contactará en las próximas horas hábiles.
                   </p>
                   <p class="m-body" style="margin:14px 0 0 0; font-size:11px; line-height:1.6; color:#5C5C5C;">
                     © 2026 MANFRAN · Forwarding internacional · Aéreo · Marítimo · Terrestre
@@ -303,5 +303,5 @@
   </tr>
 </table>
 
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

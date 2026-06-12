@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
+import { FormSuccess } from '@/components/ui/FormSuccess'
 import { QUOTER } from '@/lib/constants'
 
 const serviceSchema = z.object({
@@ -42,7 +43,7 @@ type CargoFormData = z.infer<typeof cargoSchema>
 function ServiceForm() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ServiceFormData>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ServiceFormData>({
     resolver: zodResolver(serviceSchema),
   })
 
@@ -64,18 +65,25 @@ function ServiceForm() {
     }
   }
 
-  if (sent) {
-    return (
-      <div className="text-center py-12">
-        <span className="text-4xl">✅</span>
-        <p className="text-white font-display text-2xl font-bold uppercase mt-4">¡Consulta enviada!</p>
-        <p className="text-white/50 mt-2">Te contactamos dentro de las 24 hs hábiles.</p>
-      </div>
-    )
-  }
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <AnimatePresence mode="wait">
+    {sent ? (
+      <FormSuccess
+        key="success"
+        title="¡Consulta enviada!"
+        subtitle="Te contactamos dentro de las 24 hs hábiles."
+        onReset={() => { setSent(false); reset() }}
+      />
+    ) : (
+    <motion.form
+      key="form"
+      onSubmit={handleSubmit(onSubmit)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+    >
       <div className="sm:col-span-2">
         <label className="font-display text-xs text-white uppercase tracking-wider mb-1 block">Tipo de servicio *</label>
         <select {...register('serviceType')} className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-manfran-blue">
@@ -155,14 +163,16 @@ function ServiceForm() {
           {isSubmitting ? 'Enviando...' : 'Solicitar cotización'}
         </Button>
       </div>
-    </form>
+    </motion.form>
+    )}
+    </AnimatePresence>
   )
 }
 
 function CargoForm() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<CargoFormData>({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<CargoFormData>({
     resolver: zodResolver(cargoSchema),
   })
 
@@ -184,18 +194,25 @@ function CargoForm() {
     }
   }
 
-  if (sent) {
-    return (
-      <div className="text-center py-12">
-        <span className="text-4xl">✅</span>
-        <p className="text-white font-display text-2xl font-bold uppercase mt-4">¡Consulta enviada!</p>
-        <p className="text-white/50 mt-2">Te contactamos dentro de las 24 hs hábiles.</p>
-      </div>
-    )
-  }
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <AnimatePresence mode="wait">
+    {sent ? (
+      <FormSuccess
+        key="success"
+        title="¡Consulta enviada!"
+        subtitle="Te contactamos dentro de las 24 hs hábiles."
+        onReset={() => { setSent(false); reset() }}
+      />
+    ) : (
+    <motion.form
+      key="form"
+      onSubmit={handleSubmit(onSubmit)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+    >
       <div>
         <label className="font-display text-xs text-white uppercase tracking-wider mb-1 block">Origen *</label>
         <input {...register('origin')} placeholder="Ciudad / país" className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-manfran-blue" />
@@ -257,7 +274,9 @@ function CargoForm() {
           {isSubmitting ? 'Enviando...' : 'Solicitar cotización'}
         </Button>
       </div>
-    </form>
+    </motion.form>
+    )}
+    </AnimatePresence>
   )
 }
 
